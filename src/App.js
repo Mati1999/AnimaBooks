@@ -1,14 +1,18 @@
 import './App.scss';
-import Menu from './components/Menu';
+import ItemListContainer from './components/ItemListContainer';
+import NavBar from './components/NavBar';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Menu />
-      </header>
+    <div className='AppContainer'>
+      <NavBar />
+
+      <main className='AppMain'>
+        <ItemListContainer />
+      </main>
     </div>
-  );
+
+  )
 }
 
-export default App;
+export default App

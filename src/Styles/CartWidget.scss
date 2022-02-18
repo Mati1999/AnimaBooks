@@ -1,0 +1,17 @@
+@import './variables.scss';
+
+.cartWidget {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.cart {
+  color: white;
+  @include medidas(1.5rem, 1.5rem);
+}

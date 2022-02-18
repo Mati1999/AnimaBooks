@@ -1,12 +1,14 @@
 import React from 'react'
-import '../Styles/Menu.scss'
+import '../Styles/NavBar.scss'
 import { FaBook } from 'react-icons/fa';
+import CartWidget from './CartWidget';
+
 
 const Menu = () => {
     return (
         <div className='menu'>
-            {/* <img className='menu__logo' src='' alt='logo' /> */}
             <FaBook className='menu__logo' />
+            <CartWidget />
             <h4>AnimaBooks</h4>
             <ul className='menu__lista'>
                 <li><a href=''>Inicio</a></li>
