@@ -1,54 +1,70 @@
+@import './variables.scss';
 .menu {
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
-  height: 100vh;
-  width: 10%;
+  @include medidas(18%, 100vh);
   margin: 0;
+  padding: 1rem;
   background: #1b0a21;
   transition: all 0.3s ease;
 
   &:hover {
     box-shadow: 1px 0 15px #5a004e;
   }
+}
+
+.marginIcon {
+  margin: 0 1rem 0 0;
+}
+
+.menu__marca {
+  @include medidas(100%, 10%);
+  color: white;
+  display: flex;
+  align-items: center;
+
+  .menu__marcaIcon {
+    @include medidas(auto, 50%);
+    display: flex;
+    justify-content: flex-start;
+  }
 
   h4 {
     color: white;
   }
+}
 
-  .menu__logo {
-    width: 25%;
-    height: 10%;
+.menu__lista {
+  list-style-type: none;
+  @include medidas(100%, 30%);
+  margin: 2rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .menuLiIcon {
     color: white;
+    @include medidas(15%, 100%);
   }
 
-  .menu__lista {
-    list-style-type: none;
-    height: 25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
-
-  a {
-    width: 100%;
-    color: white;
-    text-decoration: none;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
-  }
-
-  .menu__lista li {
+  li {
     transition: all 0.3s ease;
     display: flex;
+    align-items: center;
 
+    a {
+      width: 75%;
+      color: white;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
     &:hover {
-      cursor: pointer;
-
       a {
         border-bottom: 2px solid #5a004e;
       }

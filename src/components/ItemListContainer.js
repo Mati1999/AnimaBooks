@@ -1,20 +1,35 @@
 import '../Styles/ItemListContainer.scss'
-import React from 'react'
+import React,{ useState,useEffect } from 'react'
 import Titulo from './Titulo';
-import ItemCount from './ItemCount';
+import ItemList from './ItemList';
+import { getMangas } from '../helpers/getMangas';
 
 
 const ItemListContainer = () => {
+    const [mangas,setmangas] = useState([]);
+    const [loading,setloading] = useState(true);
 
-    const onAdd = (cantidad) => {
-        console.log(cantidad);
-    }
+
+    useEffect(() => {
+        //lógica para traer mangas
+        getMangas.then((res) => {
+            setmangas(res)
+
+        }).catch(err => { console.log(err); })
+            .finally(() => setloading(false))
+    },[]);
 
     return (
         <div className='listContainer'>
             <Titulo contenido='Inicio' />
 
-            <ItemCount stock={5} initial={1} onAdd={onAdd} />
+            {/* Pregunto si está gargando, si lo está muestro un mensaje de cargando, si no lo está, muestro los productos */}
+            {loading
+                ?
+                <h1>Cargando...</h1>
+                :
+                <ItemList mangas={mangas} />
+            }
         </div>
     )
 }

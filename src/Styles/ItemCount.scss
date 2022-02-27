@@ -1,14 +1,12 @@
-.producto {
+.contador {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  width: 30%;
-  h4 {
-    font-size: 2rem;
-  }
+  width: 100%;
 
-  div {
+  .btnContadorContainer,
+  .btnAgregarCarritoContainer {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -16,6 +14,10 @@
     // border: 1px solid rgb(16, 239, 255);
     background: linear-gradient(to right, #620055, #af0298);
     border-radius: 0.5rem;
+  }
+
+  .btnContadorContainer {
+    padding: 0.3rem;
   }
 
   .btnContador {
@@ -37,6 +39,7 @@
 
   span {
     color: white;
+    text-align: center;
     font-size: 1.5rem;
   }
 
@@ -48,7 +51,7 @@
     border: none;
     border-radius: 0.5rem;
     background: #76bdff;
-    width: 50%;
+    width: 80%;
     height: 100%;
     font-size: 1.2rem;
     color: white;
