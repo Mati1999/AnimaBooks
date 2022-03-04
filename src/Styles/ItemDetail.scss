@@ -1,0 +1,51 @@
+@import 'variables.scss';
+
+.itemDetail {
+    @include medidas(80%, 90%);
+    background: #5a004e;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.detailImgContainer {
+    @include medidas(40%, 100%);
+    display: flex;
+    justify-content: flex-start;
+
+    img {
+        width: 100%;
+        object-fit: scale-down;
+    }
+}
+
+.detailDataContainer {
+    @include medidas(40%, 90%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border: 1px solid white;
+    border-radius: .5rem;
+    padding: 1rem;
+
+    h2 {
+        @include medidas(100%, 20%);
+        font-size: 2rem;
+    }
+
+    .detailDataGenero,
+    .detailDataPrecio {
+        @include medidas(100%, 20%);
+        font-size: 1.5rem;
+        display: flex;
+        flex-direction: column;
+
+        span {
+            font-weight: 600;
+        }
+    }
+
+}

@@ -4,6 +4,7 @@
   align-items: flex-start;
   gap: 1rem;
   width: 100%;
+  margin: 20% 0 0 0;
 
   .btnContadorContainer,
   .btnAgregarCarritoContainer {
@@ -32,6 +33,7 @@
     border: none;
     border-radius: 0.5rem;
     transition: all 0.3s ease;
+
     &:hover {
       background: #ff52e8;
     }
@@ -56,6 +58,7 @@
     font-size: 1.2rem;
     color: white;
     transition: all 0.3s ease;
+
     &:hover {
       background: #0084ff;
     }

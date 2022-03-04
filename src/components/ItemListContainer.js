@@ -3,6 +3,7 @@ import React,{ useState,useEffect } from 'react'
 import Titulo from './Titulo';
 import ItemList from './ItemList';
 import { getMangas } from '../helpers/getMangas';
+import ItemDetailContainer from './ItemDetailContainer';
 
 
 const ItemListContainer = () => {
@@ -28,8 +29,12 @@ const ItemListContainer = () => {
                 ?
                 <h1>Cargando...</h1>
                 :
-                <ItemList mangas={mangas} />
+                <div className='listContainerContent'>
+                    <ItemList mangas={mangas} />
+                    <ItemDetailContainer />
+                </div>
             }
+
         </div>
     )
 }

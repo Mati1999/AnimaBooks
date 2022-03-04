@@ -7,7 +7,7 @@ const ItemList = ({ mangas }) => {
         <div className='itemList'>
             {mangas.map((manga,i) => {
                 return (
-                    <Item key={i} id={manga.id} title={manga.title} genero={manga.genero} price={manga.price} picture={manga.picture} stock={manga.stock} />
+                    <Item key={i} id={manga.id} title={manga.title} genero={manga.genero} price={manga.price} picture={manga.picture} />
                 )
             })}
         </div>

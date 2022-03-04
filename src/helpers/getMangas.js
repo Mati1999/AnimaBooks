@@ -35,3 +35,9 @@ export const getMangas = new Promise((res,rej) => {
         res(manga);
     },2000);
 })
+
+export const getMangaDetail = new Promise((res,rej) => {
+    setTimeout(() => {
+        res(manga)
+    },2000);
+})

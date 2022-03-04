@@ -2,13 +2,8 @@ import React from 'react'
 import '../Styles/Item.scss'
 import ItemCount from './ItemCount';
 
-const Item = ({ id,title,genero,price,picture,stock }) => {
-    console.log(id);
+const Item = ({ id,title,genero,price,picture }) => {
 
-    //función onAdd para contador
-    const onAdd = (cantidad) => {
-        console.log(cantidad);
-    }
 
     return (
         <div className='item'>
@@ -16,7 +11,6 @@ const Item = ({ id,title,genero,price,picture,stock }) => {
             <h2>{title}</h2>
             <p>{genero}</p>
             <span>${price}</span>
-            <ItemCount stock={stock} initial={1} onAdd={onAdd} />
         </div>
     )
 }
