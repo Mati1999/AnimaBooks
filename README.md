@@ -3,6 +3,7 @@ Acerca del proyecto:
 Es un e-commerce de venta de mangas, donde podes buscar una gran cantidad de mangas y adquirirlos al instante.
 
 Secciones:
+
 -Inicio: Sección donde se encuentra el catálogo general con la mayoría de los mangas que uno siempre busca.
 
 <img src="public/images/imgReadMe/InicioAnimaBooks.PNG" alt="Logo" width="100%" height="100%">
@@ -11,7 +12,8 @@ Secciones:
 
 <img src="public/images/imgReadMe/CategoriaAnimaBooks.PNG" alt="Logo" width="100%" height="100%">
 
--Sobre nosotros: Sección donde se habla sobre la empresa y los objetivos que quiere lograr
+-Sobre nosotros: Sección donde se habla sobre la empresa y los objetivos que quiere lograr.
+
 -Contacto: Sección donde mostramos las redes sociales y los métodos de comunicación habilitados.
 
 
