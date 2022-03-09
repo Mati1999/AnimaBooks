@@ -1,6 +1,15 @@
-=============================================================
-Mi proyecto
-=============================================================
+# Mi proyecto
+Acerca del proyecto:
+Es un e-commerce de venta de mangas, donde podes buscar una gran cantidad de mangas y adquirirlos al instante.
+
+Secciones:
+-Inicio: Sección donde se encuentra el catálogo general con la mayoría de los mangas que uno siempre busca.
+<img src="public/images/imgReadMe/InicioAnimaBooks.PNG" alt="Logo" width="80" height="80">
+-Categorías: Sección donde se puede seleccionar las categorías mas conocidas de mangas.
+<img src="public/images/imgReadMe/CategoriaAnimaBooks.PNG" alt="Logo" width="80" height="80">
+-Sobre nosotros: Sección donde se habla sobre la empresa y los objetivos que quiere lograr
+-Contacto: Sección donde mostramos las redes sociales y los métodos de comunicación habilitados.
+
 
 # Getting Started with Create React App
 
