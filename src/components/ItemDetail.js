@@ -3,6 +3,7 @@ import '../Styles/ItemDetail.scss'
 import ItemCount from './ItemCount';
 
 const ItemDetail = ({ itemDetail }) => {
+
     //función onAdd para contador
     const onAdd = (cantidad) => {
         console.log(cantidad);

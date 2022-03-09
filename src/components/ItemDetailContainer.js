@@ -1,27 +1,52 @@
 import React,{ useEffect,useState } from 'react'
-import { getMangaDetail } from '../helpers/getMangas';
+import { getMangas } from '../helpers/getMangas';
 import ItemDetail from './ItemDetail'
 import '../Styles/ItemDetailContainer.scss'
+import Titulo from './Titulo';
+import Loader from './Loader';
+import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () => {
     const [mangaDetail,setmangaDetail] = useState([]);
+    const [loading,setloading] = useState(true);
+
+
+    const { detalleId } = useParams()
+
+
 
     useEffect(() => {
-        getMangaDetail
-            .then((res) => {
-                return (
-                    res.find(manga => manga.title === 'Shingeki no Kyojin')
-                )
-            })
+
+        getMangas.then((res) => {
+            return (
+                res.find(manga => manga.id === detalleId)
+            )
+        })
             .then(res => setmangaDetail(res))
+            .catch(err => { console.log(err); })
+            .finally(() => setloading(false))
     },[]);
 
 
     return (
 
         <div className='ItemDetailContainer'>
-            <ItemDetail itemDetail={mangaDetail} />
+
+            {loading
+                ?
+                <div className='itemListContainerLoader'>
+                    <Titulo contenido='Descargando contenido' />
+                    <Loader />
+                </div>
+                :
+                <div className='ItemDetailContainer'>
+                    <ItemDetail itemDetail={mangaDetail} />
+                </div>
+            }
         </div>
+
+
+
     )
 }
 

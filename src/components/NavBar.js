@@ -6,6 +6,7 @@ import { BiCategory } from 'react-icons/bi';
 import { FiUsers } from 'react-icons/fi';
 import { AiOutlineMessage } from 'react-icons/ai';
 import CartWidget from './CartWidget';
+import { NavLink } from 'react-router-dom';
 
 
 const Menu = () => {
@@ -40,7 +41,10 @@ const Menu = () => {
                 <h4>AnimaBooks</h4>
             </div>
             <ul className='menu__lista'>
-                <li><FaHome className='menuLiIcon marginIcon' /><a href=''>Inicio</a></li>
+                <li><CartWidget /></li>
+                <NavLink to='/'>
+                    <li><FaHome className='menuLiIcon marginIcon' /><a href=''>Inicio</a></li>
+                </NavLink>
                 <li><BiCategory className='menuLiIcon marginIcon' /><a href=''>Categorias</a></li>
                 <li><FiUsers className='menuLiIcon marginIcon' /><a href=''>Sobre nosotros</a></li>
                 <li><AiOutlineMessage className='menuLiIcon marginIcon' /><a href=''>Contacto</a></li>
