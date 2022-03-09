@@ -25,7 +25,8 @@ const App = () => {
 
         <Routes>
           <Route path='/' element={<main className='AppMain'><ItemListContainer /></main>} />
-          <Route path='/detalle/:detalleId' element={<main className='AppMain'><ItemDetailContainer /></main>} />
+          <Route path='/categoria/:categoriaId' element={<main className='AppMain'><ItemListContainer /></main>} />
+          <Route path='/item/:detalleId' element={<main className='AppMain'><ItemDetailContainer /></main>} />
           <Route path='/cart' element={<main className='AppMain'><Carrito /></main>} />
           <Route path='/*' element={<Navigate to='/' replace />} />
         </Routes>

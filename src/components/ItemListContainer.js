@@ -4,22 +4,33 @@ import Titulo from './Titulo';
 import ItemList from './ItemList';
 import { getMangas } from '../helpers/getMangas';
 import Loader from './Loader';
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 
 
 const ItemListContainer = () => {
     const [mangas,setmangas] = useState([]);
     const [loading,setloading] = useState(true);
 
+    const { categoriaId } = useParams()
+
 
     useEffect(() => {
-        //lógica para traer mangas
-        getMangas.then((res) => {
-            setmangas(res)
 
-        }).catch(err => { console.log(err); })
-            .finally(() => setloading(false))
-    },[]);
+        if (categoriaId) {
+            // lógica para traer la categoria de mangas
+            getMangas.then((res) => {
+                setmangas(res.filter(catMangas => catMangas.genero === categoriaId))
+            }).catch(err => { console.log(err); })
+                .finally(() => setloading(false))
+        } else {
+            // lógica para traer mangas
+            getMangas.then((res) => {
+                setmangas(res)
+            }).catch(err => { console.log(err); })
+                .finally(() => setloading(false))
+        }
+    },[categoriaId]);
 
     return (
         <div className='listContainer'>
@@ -33,7 +44,7 @@ const ItemListContainer = () => {
                 </div>
                 :
                 <div className='listContainerContent'>
-                    <Titulo contenido='Inicio' />
+                    <Titulo contenido={categoriaId ? categoriaId : 'Inicio'} />
                     <ItemList mangas={mangas} />
                 </div>
             }

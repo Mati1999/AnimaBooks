@@ -1,5 +1,4 @@
 import React from 'react'
-import { useRef,useEffect } from "react";
 import '../Styles/NavBar.scss'
 import { FaBook,FaHome } from 'react-icons/fa';
 import { BiCategory } from 'react-icons/bi';
@@ -11,43 +10,48 @@ import { NavLink } from 'react-router-dom';
 
 const Menu = () => {
 
-    // Logica para hacer un menú dinámico
-    // Cuando haga mouseOver sobre el navbar, que se estire el menú horizontalmente
-
-    const menuRef = useRef(null);
-    useEffect(() => {
-        let menu = menuRef.current;
-        const menuExpand = () => {
-            menu.style.width = 10 + 'rem';
-        }
-
-    },[]);
-
-    // toggler.addEventListener("click",() => {
-    //     toggler.classList.toggle("active");
-    //     const nav = document.querySelector(".nav");
-    //     nav.classList.toggle("open");
-    //     if (nav.classList.contains("open")) {
-    //         nav.style.maxHeight = nav.scrollHeight + "px";
-    //     } else {
-    //         nav.removeAttribute("style");
-    //     }
-    // })
 
     return (
-        <div className='menu' ref={menuRef}>
-            <div className='menu__marca'>
-                <FaBook className='menu__marcaIcon marginIcon' />
-                <h4>AnimaBooks</h4>
-            </div>
+        <div className='menu'>
+            <NavLink className='menu__marca' to='/'>
+                <div className='menu__marcaDiv'>
+                    <FaBook className='menu__marcaIcon marginIcon' />
+                    <h4>AnimaBooks</h4>
+                </div>
+            </NavLink>
+
+            <CartWidget></CartWidget>
             <ul className='menu__lista'>
-                <li><CartWidget /></li>
-                <NavLink to='/'>
-                    <li><FaHome className='menuLiIcon marginIcon' /><a href=''>Inicio</a></li>
+                <NavLink className='menuNavLinks' to='/'>
+                    <li className='menu__listaLi'>
+                        <div>
+                            <FaHome className='menuLiIcon marginIcon' /><a className='menu__listaA' href=''>Inicio</a>
+                        </div>
+                    </li>
                 </NavLink>
-                <li><BiCategory className='menuLiIcon marginIcon' /><a href=''>Categorias</a></li>
-                <li><FiUsers className='menuLiIcon marginIcon' /><a href=''>Sobre nosotros</a></li>
-                <li><AiOutlineMessage className='menuLiIcon marginIcon' /><a href=''>Contacto</a></li>
+                <li className='menu__listaLi'>
+                    <div>
+                        <BiCategory className='menuLiIcon marginIcon' />Categorias
+                    </div>
+                    <ul>
+                        <NavLink to='categoria/Shounen'>
+                            <a href=""><li>Shounen</li></a>
+                        </NavLink>
+                        <NavLink to='categoria/Shojo'>
+                            <a href=""><li>Shojo</li></a>
+                        </NavLink>
+                    </ul>
+                </li>
+                <li className='menu__listaLi'>
+                    <div>
+                        <FiUsers className='menuLiIcon marginIcon' /><a className='menu__listaA' href=''>Sobre nosotros</a>
+                    </div>
+                </li>
+                <li className='menu__listaLi'>
+                    <div>
+                        <AiOutlineMessage className='menuLiIcon marginIcon' /><a className='menu__listaA' href=''>Contacto</a>
+                    </div>
+                </li>
             </ul>
         </div>
     )

@@ -4,7 +4,7 @@
   width: 100%;
   height: 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 
   &:hover {
     cursor: pointer;
@@ -13,5 +13,5 @@
 
 .cart {
   color: white;
-  @include medidas(1.5rem, 1.5rem);
+  @include medidas(2rem, 2rem);
 }
