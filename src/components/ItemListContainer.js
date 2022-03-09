@@ -3,7 +3,6 @@ import React,{ useState,useEffect } from 'react'
 import Titulo from './Titulo';
 import ItemList from './ItemList';
 import { getMangas } from '../helpers/getMangas';
-import ItemDetailContainer from './ItemDetailContainer';
 import Loader from './Loader';
 import { Link } from 'react-router-dom';
 
@@ -35,9 +34,7 @@ const ItemListContainer = () => {
                 :
                 <div className='listContainerContent'>
                     <Titulo contenido='Inicio' />
-                    {/* <Link to='detalle/:detalleId'> */}
                     <ItemList mangas={mangas} />
-                    {/* </Link> */}
                 </div>
             }
 

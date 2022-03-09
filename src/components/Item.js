@@ -7,14 +7,14 @@ const Item = ({ id,title,genero,price,picture }) => {
 
 
     return (
-        <div className='item'>
-            <Link to={`detalleId/${id}`}>
+        <Link className='item' to={`/detalle/${id}`}>
+            <div >
                 <img src={picture} alt="" />
                 <h2>{title}</h2>
                 <p>{genero}</p>
                 <span>${price}</span>
-            </Link>
-        </div>
+            </div>
+        </Link>
     )
 }
 
