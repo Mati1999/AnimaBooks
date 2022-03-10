@@ -9,15 +9,14 @@
 .AppContainer {
   @include medidas(100vw, 100vh);
   display: flex;
+  background: $colorPrimario;
+  color: $blanco;
 }
 
 .AppMain {
   @include medidas(82%, 100%);
   display: flex;
   margin: 0 0 0 18%;
+  overflow-x: hidden;
+  padding-bottom: 2rem;
 }
-
-// .Toastify__toast-theme--light {
-//   background: #5a004e !important;
-//   color: white !important;
-// }

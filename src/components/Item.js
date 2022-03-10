@@ -8,8 +8,8 @@ const Item = ({ id,title,genero,price,picture }) => {
 
     return (
         <Link className='item' to={`/item/${id}`}>
+            <img src={picture} alt="" />
             <div >
-                <img src={picture} alt="" />
                 <h2>{title}</h2>
                 <p>{genero}</p>
                 <span>${price}</span>

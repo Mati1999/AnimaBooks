@@ -1,3 +1,10 @@
+// Variables
+
+$blanco:white;
+$colorPrimario:#1b0a21;
+
+
+
 @mixin medidas($width, $height) {
   width: $width;
   height: $height;

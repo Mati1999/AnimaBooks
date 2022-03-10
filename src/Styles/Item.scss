@@ -3,14 +3,28 @@
 .item {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background: #5a004e;
   color: white;
-  @include medidas(20%, 100%);
+  @include medidas(20%, auto);
   border-radius: 0.5rem;
-  padding: 1rem;
+  // border: 1px solid #a200ff3d;
+  padding: 0 0 .5rem 0;
+  margin: 0 .5rem .5rem .5rem;
   text-decoration: none;
+  transition: box-shadow .1s ease;
+
+  &:hover {
+    box-shadow: 0px 0px 10px #a200ff6e;
+  }
+
+  div {
+    @include medidas(100%, auto);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 0 .2rem;
+  }
 
   h2,
   p,
@@ -20,11 +34,13 @@
   }
 
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
   }
 
   img {
     width: 100%;
+    border-radius: 0.5rem .5rem 0 0;
     object-fit: cover;
   }
 }
