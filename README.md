@@ -2,6 +2,9 @@
 Acerca del proyecto:
 Es un e-commerce de venta de mangas, donde podes buscar una gran cantidad de mangas y adquirirlos al instante.
 
+<img src="public/images/imgReadMe/2022-03-10 18-33-57.gif" alt="Logo" width="100%" height="100%">
+
+
 Secciones:
 
 -Inicio: Sección donde se encuentra el catálogo general con la mayoría de los mangas que uno siempre busca.
