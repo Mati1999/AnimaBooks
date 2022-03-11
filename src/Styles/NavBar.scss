@@ -4,19 +4,21 @@
   position: fixed;
   top: 0;
   left: 0;
+  height: 100vh;
+  margin: 0;
+  background: #0c040e;
+  transition: all .3s ease-out;
+  overflow-x: hidden;
+}
+
+.menuDivItems {
+  height: 100%;
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  @include medidas(18%, 100vh);
-  margin: 0;
-  padding: 1rem;
-  background: #0c040e;
-  transition: all 0.3s ease;
-
-  &:hover {
-    box-shadow: 1px 0 15px #5a004e;
-  }
+  padding: 1rem 0 0 1.5rem;
 }
 
 .marginIcon {
@@ -35,19 +37,21 @@
   }
 
   .menu__marcaIcon {
-    @include medidas(auto, 50%);
-    display: flex;
-    justify-content: flex-start;
+    @include medidas(4rem, 50%);
+    padding: 0 10% 0 0;
+    margin: 0;
   }
 
   h4 {
+    @include medidas(100%, auto);
     color: white;
+    margin: 0 0 0 1rem;
   }
 }
 
 .menu__lista {
   list-style-type: none;
-  @include medidas(100%, 30%);
+  @include medidas(100%, 40%);
   margin: 2rem 0 0 0;
   display: flex;
   flex-direction: column;
@@ -55,7 +59,8 @@
 
   .menuLiIcon {
     color: white;
-    @include medidas(15%, 100%);
+    @include medidas(2rem, 100%);
+    margin: 0 2rem 0 0;
   }
 
 }
@@ -79,7 +84,7 @@
   }
 
   .menu__listaA {
-    width: 75%;
+    width: 50%;
     color: white;
     text-decoration: none;
     border-bottom: 2px solid transparent;
@@ -105,6 +110,10 @@
     text-decoration: none;
     transition: all 0.3s ease;
     border-bottom: 2px solid transparent;
+
+    li {
+      text-align: center;
+    }
 
     &:hover {
       border-bottom: 2px solid #5a004e;
