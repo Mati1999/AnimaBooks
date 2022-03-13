@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import '../Styles/ItemCount.scss'
 import { toast } from 'react-toastify';
-import GoToCartButton from './GoToCartButton';
+import Button from './Button';
 
 const ItemCount = ({ stock,initial,nombre }) => {
 
@@ -81,9 +81,9 @@ const ItemCount = ({ stock,initial,nombre }) => {
       </div>
       <div className='btnAgregarCarritoContainer'>
         {addOnCart ?
-          <GoToCartButton />
+          <Button clase={"goToCartButton"} content={'Ir al carrito'} event={() => { '' }} goTo={'/cart'} />
           :
-          <button className='btnAgregarCarrito' type='text' onClick={() => { changeAddCartState() }} >Añadir al carrito</button>
+          <Button clase={"btnAgregarCarrito"} content={'Agregar al carrito'} event={changeAddCartState} goTo={''} />
         }
       </div>
     </div>
