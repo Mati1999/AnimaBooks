@@ -13,7 +13,6 @@ const ItemDetailContainer = () => {
 
     const { detalleId } = useParams()
 
-
     useEffect(() => {
 
         getMangas.then((res) => {
@@ -25,7 +24,6 @@ const ItemDetailContainer = () => {
             .catch(err => { console.log(err); })
             .finally(() => setloading(false))
     },[detalleId]);
-
 
     return (
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import '../Styles/Item.scss'
-import ItemCount from './ItemCount';
 
 const Item = ({ id,title,genero,price,picture }) => {
 

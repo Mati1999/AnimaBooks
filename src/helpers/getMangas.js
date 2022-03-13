@@ -91,29 +91,4 @@ export const getMangas = new Promise((res,rej) => {
         res(manga);
     },2000);
 
-
-
-    // fetch("https://api.mangadex.org/manga?limit=4")
-    //     .then(res => {
-    //         return res.json()
-    //     })
-    //     .then(res => {
-    //         return res.data;
-    //     })
-    //     .then(mangas => {
-    //         res(mangas)
-
-    //         mangas.forEach(manga => {
-    //             console.log(manga);
-    //         });
-    //     })
-
-    // fetch("https://api.mangadex.org/cover")
-    //     .then(res => {
-    //         return res.json()
-    //     })
-    //     .then(res => {
-    //         console.log(res);;
-    //     })
-
 })

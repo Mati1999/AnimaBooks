@@ -19,15 +19,13 @@ const ItemListContainer = () => {
 
         if (categoriaId) {
             // lógica para traer la categoria de mangas
-            getMangas.then((res) => {
-                setmangas(res.filter(catMangas => catMangas.genero === categoriaId))
-            }).catch(err => { console.log(err); })
+            getMangas.then(res => setmangas(res.filter(catMangas => catMangas.genero === categoriaId)))
+                .catch(err => console.log(err))
                 .finally(() => setloading(false))
         } else {
             // lógica para traer mangas
-            getMangas.then((res) => {
-                setmangas(res)
-            }).catch(err => { console.log(err); })
+            getMangas.then(res => setmangas(res))
+                .catch(err => console.log(err))
                 .finally(() => setloading(false))
         }
     },[categoriaId]);

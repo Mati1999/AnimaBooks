@@ -13,7 +13,7 @@ const ItemDetail = ({ itemDetail }) => {
                 <h2 className='detailDataTitle'>{itemDetail.title}</h2>
                 <p className='detailDataGenero'><span>Genero:</span>{itemDetail.genero}</p>
                 <span className='detailDataPrecio'><span>Precio:</span> ${itemDetail.price}</span>
-                <ItemCount stock={itemDetail.stock} initial={1} />
+                <ItemCount stock={itemDetail.stock} initial={1} nombre={itemDetail.title} />
             </div>
         </div>
     )

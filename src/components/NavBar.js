@@ -12,7 +12,7 @@ const Menu = () => {
     const [widthMenu,setwidthMenu] = useState('6%');
 
     const growMenu = {
-        width: widthMenu,
+        width: widthMenu
     };
 
     return (
