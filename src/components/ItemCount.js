@@ -3,7 +3,7 @@ import '../Styles/ItemCount.scss'
 import { toast } from 'react-toastify';
 import Button from './Button';
 
-const ItemCount = ({ stock,initial,nombre,setAddOnCart }) => {
+const ItemCount = ({ stock,initial,nombre,itemAdd }) => {
 
   const [count,setCount] = useState(initial)
 
@@ -38,21 +38,7 @@ const ItemCount = ({ stock,initial,nombre,setAddOnCart }) => {
     })
   }
 
-  const addItemToCart = () => {
-    toast.success(`Se ha agregado ${count} mangas de ${nombre} al carrito`,{
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      style: {
-        background: 'white',
-        color: 'black'
-      }
-    })
-  }
+
 
   const restarUno = () => {
     if (count > initial) setCount(count - 1)
@@ -64,13 +50,6 @@ const ItemCount = ({ stock,initial,nombre,setAddOnCart }) => {
     else noStock()
   }
 
-
-  // Cambiar estado de boton de agregar al carrito
-  const changeAddCartState = () => {
-    setAddOnCart(true);
-    addItemToCart();
-  }
-
   return (
     <div className='contador'>
       <div className='btnContadorContainer'>
@@ -79,7 +58,7 @@ const ItemCount = ({ stock,initial,nombre,setAddOnCart }) => {
         <button className='btnContador' type='text' onClick={sumarUno}>+</button>
       </div>
       <div className='btnAgregarCarritoContainer'>
-        <Button clase={"btnAgregarCarrito"} content={'Agregar al carrito'} event={changeAddCartState} goTo={''} />
+        <Button clase={"btnAgregarCarrito"} content={'Agregar al carrito'} event={() => { itemAdd(count,nombre) }} goTo={''} />
       </div>
     </div>
   )
