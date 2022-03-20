@@ -1,10 +1,11 @@
 @import './variables.scss';
 
 .cartWidget {
-  width: 100%;
+  width: 25%;
   height: 2rem;
   display: flex;
   justify-content: flex-start;
+  position: relative;
 
   &:hover {
     cursor: pointer;
@@ -14,4 +15,17 @@
 .cart {
   color: white;
   @include medidas(2rem, 2rem);
+}
+
+.iconoCarrito {
+  position: absolute;
+  top: -25%;
+  right: 0;
+  @include medidas(1.5rem, 1.5rem);
+  background: red;
+  color: $blanco;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

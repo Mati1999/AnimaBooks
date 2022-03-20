@@ -1,0 +1,114 @@
+@import 'variables.scss';
+
+.noItemsInCart {
+    @include medidas(100%, 100vh);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+
+    h2 {
+        margin: 0 0 2rem 0
+    }
+}
+
+.carrito {
+    @include medidas(100%, 100vh);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+.carritoDetalle {
+    @include medidas(100%, 90%);
+    display: flex;
+    justify-content: space-between
+}
+
+.carritoProductos {
+    @include medidas(50%, 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 3rem 0 0 0;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        @include medidas(10px, 100%);
+        background-color: black;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #af0298;
+    }
+}
+
+.carritoProducto {
+    @include medidas(60%, 30%);
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 10% 0;
+
+    .productoImgCont {
+        @include medidas(30%, 100%);
+        display: flex;
+        align-items: center;
+    }
+
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .productoDetalle {
+        @include medidas(40%, 100%);
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h3 {
+            font-size: 2rem;
+        }
+    }
+
+    button {
+        background: transparent;
+        border: 1px solid #af0298;
+        border-radius: .5rem;
+        padding: .5rem;
+        color: $blanco;
+        transition: all .3s ease;
+
+        &:hover {
+            background: #af0298;
+        }
+    }
+}
+
+.carritoDetalleGral {
+    @include medidas(45%, 100%)
+}
+
+.btnVaciarCarrito {
+    @include medidas(40%, 3rem);
+    background: transparent;
+    border: 1px solid rgb(199, 0, 0);
+    border-radius: .5rem;
+    color: $blanco;
+    font-size: 1.2rem;
+    transition: all .3s ease;
+
+    &:hover {
+        background: rgb(199, 0, 0);
+    }
+}

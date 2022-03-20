@@ -3,7 +3,7 @@ import '../Styles/ItemCount.scss'
 import { toast } from 'react-toastify';
 import Button from './Button';
 
-const ItemCount = ({ stock,initial,nombre,itemAdd }) => {
+const ItemCount = ({ stock,initial,addOnCart,prodInfo,itemAdd }) => {
 
   const [count,setCount] = useState(initial)
 
@@ -38,8 +38,6 @@ const ItemCount = ({ stock,initial,nombre,itemAdd }) => {
     })
   }
 
-
-
   const restarUno = () => {
     if (count > initial) setCount(count - 1)
     else cantBeCero();
@@ -58,7 +56,10 @@ const ItemCount = ({ stock,initial,nombre,itemAdd }) => {
         <button className='btnContador' type='text' onClick={sumarUno}>+</button>
       </div>
       <div className='btnAgregarCarritoContainer'>
-        <Button clase={"btnAgregarCarrito"} content={'Agregar al carrito'} event={() => { itemAdd(count,nombre) }} goTo={''} />
+        <Button clase={"btnAgregarCarrito"} content={'Agregar al carrito'} event={() => {
+          itemAdd(count,prodInfo)
+          addOnCart(true);
+        }} goTo={''} />
       </div>
     </div>
   )
