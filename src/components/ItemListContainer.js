@@ -2,7 +2,6 @@ import '../Styles/ItemListContainer.scss'
 import React,{ useState,useEffect } from 'react'
 import Titulo from './Titulo';
 import ItemList from './ItemList';
-import { getMangas } from '../helpers/getMangas';
 import Loader from './Loader';
 import { useParams } from 'react-router-dom';
 import { collection,getDocs,getFirestore,query,where } from 'firebase/firestore';

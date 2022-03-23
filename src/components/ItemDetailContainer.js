@@ -1,5 +1,4 @@
 import React,{ useEffect,useState } from 'react'
-import { getMangas } from '../helpers/getMangas';
 import ItemDetail from './ItemDetail'
 import '../Styles/ItemDetailContainer.scss'
 import Titulo from './Titulo';
