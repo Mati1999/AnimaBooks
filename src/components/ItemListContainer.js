@@ -5,6 +5,7 @@ import ItemList from './ItemList';
 import { getMangas } from '../helpers/getMangas';
 import Loader from './Loader';
 import { useParams } from 'react-router-dom';
+import { collection,getDocs,getFirestore,query,where } from 'firebase/firestore';
 
 
 
@@ -16,15 +17,20 @@ const ItemListContainer = () => {
 
 
     useEffect(() => {
-
+        const db = getFirestore();
+        const queryCollection = collection(db,'mangas');
         if (categoriaId) {
             // lógica para traer la categoria de mangas
-            getMangas.then(res => setmangas(res.filter(catMangas => catMangas.genero === categoriaId)))
+            const queryFilter = query(queryCollection,where('genero','==',categoriaId));
+            getDocs(queryFilter)
+                .then(res => setmangas(res.docs.map(item => ({ id: item.id,...item.data() }))))
                 .catch(err => console.log(err))
                 .finally(() => setloading(false))
         } else {
             // lógica para traer mangas
-            getMangas.then(res => setmangas(res))
+
+            getDocs(queryCollection)
+                .then(res => setmangas(res.docs.map(item => ({ id: item.id,...item.data() }))))
                 .catch(err => console.log(err))
                 .finally(() => setloading(false))
         }

@@ -5,6 +5,7 @@ import '../Styles/ItemDetailContainer.scss'
 import Titulo from './Titulo';
 import Loader from './Loader';
 import { useParams } from 'react-router-dom';
+import { doc,getDoc,getFirestore } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
     const [mangaDetail,setmangaDetail] = useState([]);
@@ -14,13 +15,10 @@ const ItemDetailContainer = () => {
     const { detalleId } = useParams()
 
     useEffect(() => {
-
-        getMangas.then((res) => {
-            return (
-                res.find(manga => manga.id === detalleId)
-            )
-        })
-            .then(res => setmangaDetail(res))
+        const db = getFirestore();
+        const queryDb = doc(db,'mangas',detalleId);
+        getDoc(queryDb)
+            .then(res => setmangaDetail({ id: res.id,...res.data() }))
             .catch(err => { console.log(err); })
             .finally(() => setloading(false))
     },[detalleId]);
