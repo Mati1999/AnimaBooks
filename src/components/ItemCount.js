@@ -56,7 +56,7 @@ const ItemCount = ({ stock,initial,addOnCart,prodInfo,itemAdd }) => {
         <button className='btnContador' type='text' onClick={sumarUno}>+</button>
       </div>
       <div className='btnAgregarCarritoContainer'>
-        <Button clase={"btnAgregarCarrito"} content={'Agregar al carrito'} event={() => {
+        <Button clase={"btnAgregarCarrito"} type={'text'} content={'Agregar al carrito'} event={() => {
           itemAdd(count,prodInfo)
           addOnCart(true);
         }} goTo={''} />

@@ -49,6 +49,26 @@
   }
 }
 
+.user {
+  width: 25%;
+  height: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.userIcon {
+  color: white;
+  @include medidas(2rem, 2rem);
+  cursor: pointer;
+}
+
+.linkUserLogIn {
+  text-decoration: none;
+  @include medidas(100%, auto);
+
+}
+
 .menu__lista {
   list-style-type: none;
   @include medidas(100%, 40%);

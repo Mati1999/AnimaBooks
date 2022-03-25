@@ -22,7 +22,7 @@ const ItemDetail = ({ itemDetail }) => {
                     ?
                     <ItemCount stock={itemDetail.stock} addOnCart={setAddOnCart} initial={1} prodInfo={itemDetail} itemAdd={itemAdd} />
                     :
-                    <Button clase={"goToCartButton"} content={'Ir al carrito'} event={() => { '' }} goTo={'/cart'} />
+                    <Button clase={"goToCartButton"} type={'text'} content={'Ir al carrito'} event={() => { '' }} goTo={'/cart'} />
                 }
             </div>
         </div>

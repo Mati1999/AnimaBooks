@@ -27,7 +27,6 @@ const ItemListContainer = () => {
                 .finally(() => setloading(false))
         } else {
             // lógica para traer mangas
-
             getDocs(queryCollection)
                 .then(res => setmangas(res.docs.map(item => ({ id: item.id,...item.data() }))))
                 .catch(err => console.log(err))

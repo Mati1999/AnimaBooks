@@ -3,33 +3,21 @@ import '../Styles/NavBar.scss'
 import { FaBook,FaHome } from 'react-icons/fa';
 import { BiCategory } from 'react-icons/bi';
 import { FiUsers } from 'react-icons/fi';
-import { AiOutlineMessage } from 'react-icons/ai';
+import { AiOutlineMessage,AiOutlineUser } from 'react-icons/ai';
 import CartWidget from './CartWidget';
 import { NavLink } from 'react-router-dom';
-// import { auth } from '../firebase/config';
-// import { signInWithPopup,GoogleAuthProvider } from "firebase/auth";
+import { useUserContext } from '../context/UserContext';
+
 
 const Menu = () => {
     const [widthMenu,setwidthMenu] = useState('6%');
-    // const [userImg,setUserImg] = useState('');
+    const [userImg,setUserImg] = useState('');
+
+    const { signIngWithGoogle } = useUserContext();
 
     const growMenu = {
         width: widthMenu
     };
-
-
-    // const signIngWithGoogle = () => {
-    //     const provider = new GoogleAuthProvider();
-    //     signInWithPopup(auth,provider)
-    //         .then((res) => {
-    //             const user = res.user;
-    //             setUserImg(user.photoURL)
-    //             console.log(user);
-    //         }).catch((err) => {
-    //             console.log(err);
-    //         });
-    // }
-
 
     return (
         <div
@@ -41,13 +29,17 @@ const Menu = () => {
             <div className='menuDivItems'>
                 <NavLink className='menu__marca' to='/'>
                     <div className='menu__marcaDiv'>
-                        {/* <img src={userImg} alt="" /> */}
                         <FaBook className='menu__marcaIcon marginIcon' />
                         <h4>AnimaBooks</h4>
                     </div>
                 </NavLink>
 
                 <CartWidget></CartWidget>
+                <NavLink className='linkUserLogIn' to='/user' onClick={() => { signIngWithGoogle() }} >
+                    <div className='user'>
+                        <AiOutlineUser className='userIcon' />
+                    </div>
+                </NavLink>
                 <ul className='menu__lista'>
                     <NavLink className='menuNavLinks' to='/'>
                         <li className='menu__listaLi'>
@@ -81,10 +73,7 @@ const Menu = () => {
                         <li className='menu__listaLi'>
                             <div>
                                 <AiOutlineMessage className='menuLiIcon marginIcon' />
-                                <p
-                                    className='menu__listaA'
-                                // onClick={() => { signIngWithGoogle() }}
-                                >
+                                <p className='menu__listaA'>
                                     Contacto
                                 </p>
                             </div>

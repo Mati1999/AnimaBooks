@@ -10,7 +10,6 @@ const ItemDetailContainer = () => {
     const [mangaDetail,setmangaDetail] = useState([]);
     const [loading,setloading] = useState(true);
 
-
     const { detalleId } = useParams()
 
     useEffect(() => {

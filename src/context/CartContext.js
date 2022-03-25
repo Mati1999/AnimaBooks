@@ -50,20 +50,17 @@ function CartContextPrvovider({ children }) {
     const isStock = (prod,cant) => {
 
         let manga = cartList.find(manga => manga.id === prod.id);
-        console.log(manga);
 
         stockSobrante = (manga.stock - manga.cantidad);
-        console.log(`Stock sobrante: ${stockSobrante}`);
 
         if (stockSobrante < cant) {
-            console.log('cant mayor al stock');
             return false;
         } else {
-            console.log('cant menor al stock');
             return true;
         }
     }
 
+    let precioTotal = 0;
     const onAddExtraFunctions = (cant,itemDetail) => {
         addItemNotification(cant,itemDetail.title);
         getCantidad(cant);
@@ -105,7 +102,6 @@ function CartContextPrvovider({ children }) {
 
     //Función que me ejecuta la funcíon isInCart y luego agrega un producto al carrito o le aumenta la cantidad. Luego setea la variable addOnCart para verificar si se añadió un producto y también envía los datos del nombre y cantidad a la función de la notificación (addItemToCart) que se reproduce cuando agregamos un producto al carrito.
 
-    let precioTotal = 0;
     const itemAdd = (cant,itemDetail) => {
         if (isInCart(itemDetail)) {
             addItem({ ...itemDetail,cantidad: cant })
