@@ -1,11 +1,14 @@
 import React,{ useState,useEffect } from 'react'
-import getFirestoreApp from '../firebase/config';
-import { getAuth,createUserWithEmailAndPassword } from 'firebase/auth';
+import getFirestoreApp,{ auth } from '../firebase/config';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import { useUserContext } from '../context/UserContext';
 
-const auth = getAuth(getFirestoreApp());
 
 const Login = () => {
     const [isRegistrando,setIsRegistrando] = useState(false);
+
+    const { registrarUsuario } = useUserContext();
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -17,11 +20,11 @@ const Login = () => {
             registrarUsuario(email,password);
         } else {
             //login
+            signInWithEmailAndPassword(auth,email,password);
         }
     }
-    async function registrarUsuario(email,password) {
-        createUserWithEmailAndPassword(auth,email,password);
-    }
+
+
 
 
 

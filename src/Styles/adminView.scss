@@ -1,0 +1,62 @@
+@import 'variables.scss';
+
+.adminView {
+    @include medidas(100%, 100%);
+    display: flex;
+    flex-direction: column;
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+    }
+}
+
+.adminViewProducts {
+    @include medidas(100%, 100%);
+    margin: 1rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    li {
+        @include medidas(80%, 3rem);
+        list-style-type: none;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    h5 {
+        @include medidas(40%, 100%);
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        @include medidas(20%, 100%);
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    p {
+        @include medidas(20%, 100%);
+        text-align: left;
+        font-size: 1rem;
+
+        input {
+            @include medidas(15%, auto);
+        }
+    }
+
+    span {
+        @include medidas(15%, 100%);
+        text-align: left;
+        font-size: 1rem;
+
+        input {
+            @include medidas(30%, auto);
+        }
+    }
+}
+
+.editarDB {
+    @include medidas(25%, 100%);
+}

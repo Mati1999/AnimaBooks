@@ -13,7 +13,7 @@ const Menu = () => {
     const [widthMenu,setwidthMenu] = useState('6%');
     const [userImg,setUserImg] = useState('');
 
-    const { signIngWithGoogle } = useUserContext();
+    // const { signIngWithGoogle } = useUserContext();
 
     const growMenu = {
         width: widthMenu
@@ -35,9 +35,12 @@ const Menu = () => {
                 </NavLink>
 
                 <CartWidget></CartWidget>
-                <NavLink className='linkUserLogIn' to='/user' onClick={() => { signIngWithGoogle() }} >
+                <NavLink className='linkUserLogIn' to='/user'
+                //  onClick={() => { signIngWithGoogle() }}
+                >
                     <div className='user'>
                         <AiOutlineUser className='userIcon' />
+                        <p>Iniciar Sesión</p>
                     </div>
                 </NavLink>
                 <ul className='menu__lista'>

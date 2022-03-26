@@ -2,19 +2,20 @@ import React from 'react'
 import '../Styles/User.scss'
 import { useUserContext } from '../context/UserContext';
 import Login from './Login';
+import Home from './Home';
 
 
 const User = () => {
-    const { user,isLogged } = useUserContext();
+    const { user } = useUserContext();
 
     return (
         <>
-            {isLogged ?
-                <div>
-                    <h2>Perfil del usuario</h2>
+            {user ?
+                <div className='userProfile'>
+                    <Home />
                 </div>
                 :
-                <div>
+                <div className='userProfile'>
                     <Login />
                 </div>
             }
