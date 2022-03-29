@@ -2,10 +2,12 @@ import React,{ useState } from 'react'
 import '../Styles/ItemCount.scss'
 import { toast } from 'react-toastify';
 import Button from './Button';
+import { useUserContext } from '../context/UserContext';
 
 const ItemCount = ({ stock,initial,addOnCart,prodInfo,itemAdd }) => {
 
   const [count,setCount] = useState(initial)
+  const { user } = useUserContext();
 
   const noStock = () => {
     toast.info('Lo lamento, no tenemos mas stock por el momento',{
@@ -38,6 +40,22 @@ const ItemCount = ({ stock,initial,addOnCart,prodInfo,itemAdd }) => {
     })
   }
 
+  const logInToAddItem = () => {
+    toast.info('Debes iniciar sesión o registrarte para añadir productos al carrito.',{
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      style: {
+        background: '#5a004e',
+        color: 'white'
+      }
+    })
+  }
+
   const restarUno = () => {
     if (count > initial) setCount(count - 1)
     else cantBeCero();
@@ -57,8 +75,12 @@ const ItemCount = ({ stock,initial,addOnCart,prodInfo,itemAdd }) => {
       </div>
       <div className='btnAgregarCarritoContainer'>
         <Button clase={"btnAgregarCarrito"} type={'text'} content={'Agregar al carrito'} event={() => {
-          itemAdd(count,prodInfo)
-          addOnCart(true);
+          if (user) {
+            itemAdd(count,prodInfo)
+            addOnCart(true);
+          } else {
+            logInToAddItem()
+          }
         }} goTo={''} />
       </div>
     </div>

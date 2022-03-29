@@ -1,0 +1,77 @@
+.contador {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  margin: 20% 0 0 0;
+}
+
+.contador .btnContadorContainer,
+.contador .btnAgregarCarritoContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: -webkit-gradient(linear, left top, right top, from(#620055), to(#af0298));
+  background: linear-gradient(to right, #620055, #af0298);
+  border-radius: 0.5rem;
+}
+
+.contador .btnContadorContainer {
+  padding: 0.3rem;
+}
+
+.contador .btnContador {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 2.5rem;
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.contador .btnContador:hover {
+  background: #ff52e8;
+}
+
+.contador span {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.contador .btnAgregarCarritoContainer {
+  background: transparent;
+}
+
+.contador h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+/*# sourceMappingURL=ItemCount.css.map */

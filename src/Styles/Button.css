@@ -1,0 +1,51 @@
+.linkButtons {
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  cursor: default;
+}
+
+.linkButtons:hover {
+  cursor: pointer;
+}
+
+.btnAgregarCarrito {
+  border: none;
+  border-radius: 0.5rem;
+  background: #cc6fff;
+  width: 100%;
+  height: 100%;
+  font-size: 1.2rem;
+  padding: .5rem 1rem;
+  color: white;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.btnAgregarCarrito:hover {
+  background: #af0298;
+}
+
+.goToCartButton {
+  width: 100%;
+  border: 2px solid green;
+  border-radius: .5rem;
+  background: #1b0a21;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: .5rem 1rem;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.goToCartButton:hover {
+  background: green;
+  cursor: pointer;
+}
+/*# sourceMappingURL=Button.css.map */

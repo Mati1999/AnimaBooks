@@ -60,3 +60,16 @@
 .editarDB {
     @include medidas(25%, 100%);
 }
+
+.createNewMangaInDb {
+    @include medidas(100%, 100%);
+
+    li {
+        display: flex;
+        justify-content: space-between
+    }
+
+    input {
+        @include medidas(20%, 80%);
+    }
+}

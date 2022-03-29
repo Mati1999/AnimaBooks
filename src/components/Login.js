@@ -1,6 +1,6 @@
 import React,{ useState,useEffect } from 'react'
 import getFirestoreApp,{ auth } from '../firebase/config';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword,setPersistence,browserSessionPersistence } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { useUserContext } from '../context/UserContext';
 
@@ -20,13 +20,18 @@ const Login = () => {
             registrarUsuario(email,password);
         } else {
             //login
-            signInWithEmailAndPassword(auth,email,password);
+            setPersistence(auth,browserSessionPersistence)
+                .then(() => {
+                    return signInWithEmailAndPassword(auth,email,password);
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    console.log(errorCode);
+                    const errorMessage = error.message;
+                    console.log(errorMessage);
+                });
         }
     }
-
-
-
-
 
     return (
         <div>

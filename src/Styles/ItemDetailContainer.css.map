@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,oBAAoB,CAAC;ECMnB,KAAK,EDLc,IAAI;ECMvB,MAAM,EDNmB,IAAI;EAC3B,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;CACtB",
+    "sources": [
+        "ItemDetailContainer.scss",
+        "variables.scss"
+    ],
+    "names": [],
+    "file": "ItemDetailContainer.css"
+}

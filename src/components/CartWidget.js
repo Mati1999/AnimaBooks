@@ -6,11 +6,11 @@ import '../Styles/CartWidget.scss'
 
 const CartWidget = () => {
 
-    const { cantidad,emptyCart } = useCartContext()
+    const { cantidad } = useCartContext()
 
     return (
         <>
-            {emptyCart
+            {cantidad === 0
                 ?
                 <div className='cartWidget'>
                     <NavLink to='/cart'>

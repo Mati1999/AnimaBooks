@@ -1,0 +1,106 @@
+.adminView {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.adminView input[type=number]::-webkit-inner-spin-button,
+.adminView input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.adminViewProducts {
+  width: 100%;
+  height: 100%;
+  margin: 1rem 0 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.adminViewProducts li {
+  width: 80%;
+  height: 3rem;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.adminViewProducts h5 {
+  width: 40%;
+  height: 100%;
+  font-size: 1.2rem;
+}
+
+.adminViewProducts h6 {
+  width: 20%;
+  height: 100%;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.adminViewProducts p {
+  width: 20%;
+  height: 100%;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.adminViewProducts p input {
+  width: 15%;
+  height: auto;
+}
+
+.adminViewProducts span {
+  width: 15%;
+  height: 100%;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.adminViewProducts span input {
+  width: 30%;
+  height: auto;
+}
+
+.editarDB {
+  width: 25%;
+  height: 100%;
+}
+
+.createNewMangaInDb {
+  width: 100%;
+  height: 100%;
+}
+
+.createNewMangaInDb li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.createNewMangaInDb input {
+  width: 20%;
+  height: 80%;
+}
+/*# sourceMappingURL=adminView.css.map */

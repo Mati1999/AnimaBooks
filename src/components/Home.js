@@ -4,13 +4,14 @@ import { getAuth,signOut } from 'firebase/auth';
 import { useUserContext } from '../context/UserContext';
 import AdminView from './AdminView';
 import UserView from './UserView';
+import { useCartContext } from '../context/CartContext';
 
 const auth = getAuth(getFirestoreApp());
 
 const Home = () => {
 
     const { rol } = useUserContext();
-
+    const { clearCartStatus } = useCartContext();
     return (
         <div>
 
@@ -20,7 +21,10 @@ const Home = () => {
                 <UserView />
             }
 
-            <button onClick={() => signOut(auth)}>Cerrar Sesión</button>
+            <button onClick={() => {
+                signOut(auth)
+                clearCartStatus()
+            }}>Cerrar Sesión</button>
         </div>
     )
 }

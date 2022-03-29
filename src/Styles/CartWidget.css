@@ -1,0 +1,42 @@
+.cartWidget {
+  width: 25%;
+  height: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  position: relative;
+}
+
+.cartWidget:hover {
+  cursor: pointer;
+}
+
+.cart {
+  color: white;
+  width: 2rem;
+  height: 2rem;
+}
+
+.iconoCarrito {
+  position: absolute;
+  top: -25%;
+  right: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=CartWidget.css.map */
