@@ -59,8 +59,8 @@ const Carrito = () => {
                                         <span>Precio total: $ {totalPrice}</span>
                                         <form onSubmit={buyCart} className='buyCartForm'>
                                             <input id='userName' type='text' placeholder='Ingrese su nombre' />
-                                            <input id='userPhone' type='text' placeholder='Ingrese su teléfono' />
-                                            <input id='userEmail' type='text' placeholder='Ingrese su email' />
+                                            <input id='userPhone' type='number' placeholder='Ingrese su teléfono' />
+                                            <input id='userEmail' type='email' placeholder='Ingrese su email' />
                                             <button type='submit' onClick={() => {
                                                 changeSetComprado()
                                             }
@@ -71,7 +71,7 @@ const Carrito = () => {
                                     <div className='carritoDetalleGral'>
                                         <div>
                                             <h3>Muchas gracias por adquirir nuestros productos</h3>
-                                            <p>{`Este es código único para tu compra: 
+                                            <p>{`Este es el código único para tu compra: 
                                             ${orderId}`}</p>
                                         </div>
                                     </div>

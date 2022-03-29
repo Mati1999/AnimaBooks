@@ -22,7 +22,6 @@ function UserContextProvider({ children }) {
         const infoFinal = docuCifrada.data().rol;
         const cartFinal = docuCifrada.data().cart;
         const userOrders = docuCifrada.data().orders;
-        console.log(userOrders);
         setRol(infoFinal);
         setCart(cartFinal);
         return [infoFinal,cartFinal,userOrders];

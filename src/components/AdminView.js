@@ -8,7 +8,8 @@ import { ref } from 'firebase/storage';
 const AdminView = () => {
     const [mangasAdmin,setMangasAdmin] = useState([]);
     const [editar,setEditar] = useState(false);
-
+    const [DbEdited,setDbEdited] = useState(false);
+    const [newDb,setNewDb] = useState([]);
 
     useEffect(() => {
         const db = getFirestore();
@@ -17,14 +18,16 @@ const AdminView = () => {
             .then(res => setMangasAdmin(res.docs.map(item => ({ id: item.id,...item.data() }))))
     },[]);
 
-
-    let newDb = [];
     const editantoInputs = (e) => {
-        console.log(e.target);
         let inputId = e.target.id;
         let inputValue = e.target.value;
         let inputLiId = e.target.parentNode.parentNode.id;
-        newDb = mangasAdmin.map(item => (item.id === inputLiId ? { ...item,[inputId]: Number(inputValue) } : item));
+        if (DbEdited) {
+            setNewDb(newDb.map(item => (item.id === inputLiId ? { ...item,[inputId]: Number(inputValue) } : item)))
+        } else {
+            setNewDb(mangasAdmin.map(item => (item.id === inputLiId ? { ...item,[inputId]: Number(inputValue) } : item)))
+            setDbEdited(true)
+        }
 
         return newDb;
     }
@@ -141,7 +144,11 @@ const AdminView = () => {
                     :
                     <div>
                         <button type='submit'>Aplicar cambios</button>
-                        <button type='text' onClick={() => setEditar(false)}>Cancelar</button>
+                        <button type='text' onClick={() => {
+                            setEditar(false)
+                            setDbEdited(false)
+                        }
+                        }>Cancelar</button>
                     </div>
                 }
             </form>
