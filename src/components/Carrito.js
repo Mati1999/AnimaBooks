@@ -4,6 +4,8 @@ import { collection,getFirestore,addDoc,doc,updateDoc,query,where,documentId,wri
 import '../Styles/Carrito.scss';
 import Button from './Button';
 import { useUserContext } from '../context/UserContext';
+import { Formik } from 'formik';
+
 
 const Carrito = () => {
     const [comprado,setComprado] = useState(false);
@@ -57,15 +59,60 @@ const Carrito = () => {
                                     ?
                                     <div className='carritoDetalleGral'>
                                         <span>Precio total: $ {totalPrice}</span>
-                                        <form onSubmit={buyCart} className='buyCartForm'>
-                                            <input id='userName' type='text' placeholder='Ingrese su nombre' />
-                                            <input id='userPhone' type='number' placeholder='Ingrese su teléfono' />
-                                            <input id='userEmail' type='email' placeholder='Ingrese su email' />
-                                            <button type='submit' onClick={() => {
-                                                changeSetComprado()
-                                            }
-                                            }>Comprar productos</button>
-                                        </form>
+
+                                        <Formik
+                                            initialValues={{
+                                                name: '',
+                                                phone: '',
+                                                email: ''
+                                            }}
+                                            validate={(valores) => {
+                                                let errores = {};
+
+                                                // Validar password
+                                                if (!valores.name) {
+                                                    errores.name = 'Porfavor ingrese un nombre';
+                                                } else if (!/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test(valores.name)) {
+                                                    errores.name = 'Ingrese un nombre válido';
+                                                }
+
+                                                if (!valores.phone) {
+                                                    errores.phone = 'Porfavor ingrese un telefono celular';
+                                                } else if (!/^\(?(\d{3})\)?[-]?(\d{3})[-]?(\d{4})$/.test(valores.phone)) {
+                                                    errores.phone = 'El número de teléfono debe tener 10 dígitos';
+                                                }
+
+
+                                                // Validar correo
+                                                if (!valores.email) {
+                                                    errores.email = 'Porfavor, ingrese un correo electrónico';
+                                                } else if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.email)) {
+                                                    errores.email = 'El correo solo puede contener letras, números, puntos, guiones y guión bajo. Y no te olvides del @';
+                                                }
+                                                return errores;
+                                            }}
+                                        >
+                                            {({ values,errors,touched,handleChange,handleBlur }) => (
+                                                <form className='buyCartForm' onSubmit={buyCart}>
+                                                    <div>
+                                                        <input id='name' type='text' values={values.name} onChange={handleChange} onBlur={handleBlur} placeholder='Ingrese su nombre' />
+                                                        {touched.name && errors.name && <p>{errors.name}</p>}
+                                                    </div>
+
+                                                    <div>
+                                                        <input id='phone' type='number' values={values.phone} onChange={handleChange} onBlur={handleBlur} placeholder='Ingrese su teléfono' />
+                                                        {touched.phone && errors.phone && <p>{errors.phone}</p>}
+                                                    </div>
+
+                                                    <div>
+                                                        <input id='email' type='email' values={values.email} onChange={handleChange} onBlur={handleBlur} placeholder='Ingrese su email' />
+                                                        {touched.email && errors.email && <p>{errors.email}</p>}
+                                                    </div>
+                                                    {(Object.keys(errors).length === 0) && <button type='submit' onClick={() => { changeSetComprado() }}>Comprar productos</button>}
+
+                                                </form>
+                                            )}
+                                        </Formik>
                                     </div>
                                     :
                                     <div className='carritoDetalleGral'>

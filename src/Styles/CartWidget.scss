@@ -1,8 +1,7 @@
 @import './variables.scss';
 
 .cartWidget {
-  width: 25%;
-  height: 2rem;
+  @include medidas(100%, 2rem);
   display: flex;
   justify-content: flex-start;
   position: relative;
@@ -10,10 +9,28 @@
   &:hover {
     cursor: pointer;
   }
+
+  a {
+    @include medidas(100%, 100%);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $colorPrimario;
+
+    &:hover>p {
+      border-bottom: 2px solid $colorPrimario;
+    }
+  }
+
+  p {
+    margin: 0 0 0 2rem;
+    border-bottom: 2px solid transparent;
+    transition: all .3s ease;
+  }
 }
 
 .cart {
-  color: white;
+  color: $colorPrimario;
   @include medidas(2rem, 2rem);
 }
 
@@ -22,8 +39,8 @@
   top: -25%;
   right: 0;
   @include medidas(1.5rem, 1.5rem);
-  background: red;
-  color: $blanco;
+  background: $colorTerciario;
+  color: $colorPrimario;
   border-radius: 50%;
   display: flex;
   align-items: center;

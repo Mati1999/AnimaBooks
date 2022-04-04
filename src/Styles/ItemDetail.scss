@@ -2,7 +2,7 @@
 
 .itemDetail {
     @include medidas(100%, 100%);
-    color: white;
+    color: $colorSecundario;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -12,11 +12,13 @@
 .detailImgContainer {
     @include medidas(40%, 100%);
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
 
     img {
-        width: 100%;
-        object-fit: scale-down;
+        width: 80%;
+        border-radius: 1rem;
+        object-fit: cover;
     }
 }
 
@@ -29,6 +31,8 @@
     border: 1px solid white;
     border-radius: .5rem;
     padding: 1rem;
+    box-shadow: 1px 1px 7px $colorTerciario;
+
 
     h2 {
         @include medidas(100%, 20%);

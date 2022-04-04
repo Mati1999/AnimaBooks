@@ -1,0 +1,74 @@
+@import './variables.scss';
+
+.userProfile {
+    @include medidas(100%, 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    h1 {
+        margin: 0 0 5rem 0
+    }
+}
+
+.orders {
+    @include medidas(100%, 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    h2 {
+        margin: 0 0 3rem 0;
+    }
+}
+
+.ordersContainer {
+    @include medidas(100%, 50%);
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-top: 1px solid $colorSecundario;
+    border-bottom: 1px solid $colorSecundario;
+
+}
+
+.order {
+    @include medidas(20%, 100%);
+    margin: 0 3rem 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1px solid $colorSecundario;
+    border-radius: .5rem;
+    box-shadow: 2px 2px 5px $colorTerciario;
+
+    ul {
+        padding: 1rem;
+    }
+
+    li {
+        margin: 0 0 .5rem 0;
+        list-style-type: none;
+    }
+
+    p {
+        font-weight: 600;
+        padding: 0 0 0 1rem
+    }
+}
+
+.orderAndDate {
+    @include medidas(100%, 15%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    border-bottom: 1px solid $colorSecundario;
+
+    h5 {
+        margin: 0 1rem 0 0;
+    }
+}

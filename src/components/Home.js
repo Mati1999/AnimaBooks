@@ -13,8 +13,7 @@ const Home = () => {
     const { rol } = useUserContext();
     const { clearCartStatus } = useCartContext();
     return (
-        <div>
-
+        <>
             {rol === 'admin' ?
                 <AdminView />
                 :
@@ -25,7 +24,7 @@ const Home = () => {
                 signOut(auth)
                 clearCartStatus()
             }}>Cerrar Sesión</button>
-        </div>
+        </>
     )
 }
 

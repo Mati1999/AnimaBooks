@@ -10,12 +10,20 @@
   @include medidas(100vw, 100vh);
   display: flex;
   background: $colorPrimario;
-  color: $blanco;
+  color: $colorSecundario;
 }
 
 .AppMain {
   @include medidas(94%, 100%);
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   margin: 0 0 0 6%;
   overflow-x: hidden;
+}
+
+.btnLogOut {
+  @include medidas(25%, 5%);
+
 }

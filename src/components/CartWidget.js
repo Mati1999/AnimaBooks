@@ -15,13 +15,14 @@ const CartWidget = () => {
                 <div className='cartWidget'>
                     <NavLink to='/cart'>
                         <FaShoppingCart className='cart' />
+                        <p>Carrito</p>
                     </NavLink>
                 </div>
                 :
                 <div className='cartWidget'>
-
                     <NavLink to='/cart'>
                         <FaShoppingCart className='cart' />
+                        <p>Carrito</p>
                     </NavLink>
 
                     <span className='iconoCarrito'>{cantidad}</span>

@@ -19,8 +19,8 @@ const ItemCount = ({ stock,initial,addOnCart,prodInfo,itemAdd }) => {
       draggable: true,
       progress: undefined,
       style: {
-        background: '#5a004e',
-        color: 'white'
+        background: '#2B494B',
+        color: '#fdfffa'
       }
     })
   }
@@ -34,8 +34,8 @@ const ItemCount = ({ stock,initial,addOnCart,prodInfo,itemAdd }) => {
       draggable: true,
       progress: undefined,
       style: {
-        background: '#5a004e',
-        color: 'white'
+        background: '#2B494B',
+        color: '#fdfffa'
       }
     })
   }
@@ -50,8 +50,8 @@ const ItemCount = ({ stock,initial,addOnCart,prodInfo,itemAdd }) => {
       draggable: true,
       progress: undefined,
       style: {
-        background: '#5a004e',
-        color: 'white'
+        background: '#2B494B',
+        color: '#fdfffa'
       }
     })
   }

@@ -93,10 +93,6 @@ const AdminView = () => {
         setMangasAdmin([...mangasAdmin,newManga]);
     }
 
-
-
-
-
     return (
         <div className='adminView'>
 

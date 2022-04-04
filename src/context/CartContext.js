@@ -12,7 +12,6 @@ function CartContextPrvovider({ children }) {
     const [cantidad,setCantidad] = useState(0);
     const [totalPrice,setTotalPrice] = useState(0);
     const [emptyCart,setEmptyCart] = useState(true);
-    const [userOrders,setUserOrders] = useState([]);
     const [orderId,setOrderId] = useState('');
 
 
@@ -121,7 +120,7 @@ function CartContextPrvovider({ children }) {
     }
 
     const addItemNotification = (count,nombre) => {
-        toast.success(`Se ha agregado ${count} mangas de ${nombre} al carrito`,{
+        toast.success(`Se ${count === 1 ? 'ha' : 'han'} agregado ${count} ${count === 1 ? 'manga' : 'mangas'} de ${nombre} al carrito`,{
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -130,8 +129,8 @@ function CartContextPrvovider({ children }) {
             draggable: true,
             progress: undefined,
             style: {
-                background: 'white',
-                color: 'black'
+                background: '#fdfffa',
+                color: '#2B494B'
             }
         })
     }
@@ -146,8 +145,8 @@ function CartContextPrvovider({ children }) {
             draggable: true,
             progress: undefined,
             style: {
-                background: '#5a004e',
-                color: 'white'
+                background: '#2B494B',
+                color: '#fdfffa'
             }
         })
     }
@@ -174,9 +173,9 @@ function CartContextPrvovider({ children }) {
     const buyCart = async (e) => {
         e.preventDefault();
 
-        let userName = e.target.userName.value;
-        let userEmail = e.target.userEmail.value;
-        let userPhone = e.target.userPhone.value;
+        let userName = e.target.name.value;
+        let userEmail = e.target.email.value;
+        let userPhone = e.target.phone.value;
 
         let order = {
             buyer: {
@@ -186,7 +185,7 @@ function CartContextPrvovider({ children }) {
             },
             items:
                 cartList.map(item => (
-                    { id: item.id,title: item.title,price: (item.price * item.cantidad) }
+                    { id: item.id,title: item.title,amount: item.cantidad,price: (item.price * item.cantidad) }
                 ))
             ,
             date: new Date().toLocaleDateString()
@@ -217,7 +216,6 @@ function CartContextPrvovider({ children }) {
                 }
             )))
         batch.commit()
-
     }
 
 

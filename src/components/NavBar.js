@@ -10,10 +10,10 @@ import { useUserContext } from '../context/UserContext';
 
 
 const Menu = () => {
-    const [widthMenu,setwidthMenu] = useState('6%');
-    const [userImg,setUserImg] = useState('');
+    const [widthMenu,setwidthMenu] = useState('18%');
+    // const { signIngWithGoogle } = useUserContext()
 
-    // const { signIngWithGoogle } = useUserContext();
+    const { user } = useUserContext();
 
     const growMenu = {
         width: widthMenu
@@ -24,7 +24,7 @@ const Menu = () => {
             className='menu'
             style={growMenu}
             onMouseOver={() => { setwidthMenu('18%') }}
-            onMouseLeave={() => { setwidthMenu('6%') }}
+            onMouseLeave={() => { setwidthMenu('18%') }}
         >
             <div className='menuDivItems'>
                 <NavLink className='menu__marca' to='/'>
@@ -40,7 +40,7 @@ const Menu = () => {
                 >
                     <div className='user'>
                         <AiOutlineUser className='userIcon' />
-                        <p>Iniciar Sesión</p>
+                        <p>{user ? 'Ir al perfil' : 'Inicia Sesión'}</p>
                     </div>
                 </NavLink>
                 <ul className='menu__lista'>

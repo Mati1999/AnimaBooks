@@ -13,6 +13,7 @@ function UserContextProvider({ children }) {
     const [user,setUser] = useState(false);
     const [rol,setRol] = useState('');
     const [cart,setCart] = useState([]);
+    const [userOrders,setUserOrders] = useState([]);
 
     const db = getFirestore();
 
@@ -24,6 +25,7 @@ function UserContextProvider({ children }) {
         const userOrders = docuCifrada.data().orders;
         setRol(infoFinal);
         setCart(cartFinal);
+        setUserOrders(userOrders);
         return [infoFinal,cartFinal,userOrders];
     }
 
@@ -77,6 +79,7 @@ function UserContextProvider({ children }) {
                 user,
                 rol,
                 cart,
+                userOrders,
                 setRol,
                 registrarUsuario,
                 // signIngWithGoogle

@@ -29,7 +29,8 @@
 .carritoDetalle {
     @include medidas(100%, 90%);
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    padding: 1rem 0;
 }
 
 .carritoProductos {
@@ -37,16 +38,22 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 3rem 0 0 0;
+    padding: 1rem;
     overflow-y: auto;
+    border-radius: .5rem;
+    box-shadow: inset 0px 0px 10px $colorTerciario;
+
 
     &::-webkit-scrollbar {
         @include medidas(10px, 100%);
-        background-color: black;
+        border-radius: .5rem;
+        background-color: $colorSecundario;
+        box-shadow: -2px 0px 5px $colorTerciario;
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: #af0298;
+        border-radius: .5rem;
+        background-color: $colorTerciario;
     }
 }
 
@@ -83,32 +90,70 @@
 
     button {
         background: transparent;
-        border: 1px solid #af0298;
+        border: 2px solid $colorTerciario;
         border-radius: .5rem;
         padding: .5rem;
-        color: $blanco;
+        font-weight: 600;
+        color: $colorTerciario;
         transition: all .3s ease;
 
         &:hover {
-            background: #af0298;
+            color: $colorPrimario;
+            background: $colorTerciario;
         }
     }
 }
 
 .carritoDetalleGral {
-    @include medidas(45%, 100%)
+    @include medidas(45%, 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    span {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0 0 2rem 0;
+    }
 }
 
 .btnVaciarCarrito {
     @include medidas(40%, 3rem);
     background: transparent;
-    border: 1px solid rgb(199, 0, 0);
+    border: 2px solid $colorTerciario;
     border-radius: .5rem;
-    color: $blanco;
+    color: $colorTerciario;
     font-size: 1.2rem;
     transition: all .3s ease;
 
     &:hover {
-        background: rgb(199, 0, 0);
+        color: $colorPrimario;
+        background: $colorTerciario;
+    }
+}
+
+.buyCartForm {
+    @include medidas(100%, 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div {
+        @include medidas(100%, 12%);
+        margin: 0 0 10% 0;
+    }
+
+    input {
+        @include medidas(100%, 100%);
+        border: 2px solid $colorTerciario;
+        border-radius: .5rem;
+        padding: .5rem;
+        font-size: 1.2rem;
+        transition: all .3s ease;
+
+        &:focus {
+            border: 2px solid $colorSecundario;
+            outline: none;
+        }
     }
 }

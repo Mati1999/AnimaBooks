@@ -15,33 +15,35 @@
 .btnAgregarCarrito {
     border: none;
     border-radius: 0.5rem;
-    background: #cc6fff;
+    background: $colorSecundario;
     width: 100%;
     height: 100%;
     font-size: 1.2rem;
     padding: .5rem 1rem;
-    color: white;
+    color: $colorPrimario;
     transition: all 0.3s ease;
 
     &:hover {
-        background: #af0298;
+        color: $colorPrimario;
+        background: $colorTerciario;
     }
 }
 
 
 .goToCartButton {
     width: 100%;
-    border: 2px solid green;
+    border: 2px solid $colorSecundario;
     border-radius: .5rem;
     background: $colorPrimario;
-    color: $blanco;
+    color: $colorSecundario;
     font-size: 1.3rem;
     font-weight: 700;
     padding: .5rem 1rem;
     transition: all .3s ease;
 
     &:hover {
-        background: green;
+        background: $colorSecundario;
+        color: $colorPrimario;
         cursor: pointer;
     }
 }

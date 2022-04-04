@@ -1,9 +1,11 @@
 // Variables
 
 $blanco:white;
-$colorPrimario:#1b0a21;
+$colorPrimario:#fdfffa;
+$colorSecundario:#2B494B;
+$colorTerciario:#49919D;
 
-
+// $colorTerciario:#fdfffa;
 
 @mixin medidas($width, $height) {
   width: $width;
