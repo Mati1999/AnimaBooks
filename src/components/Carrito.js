@@ -9,15 +9,21 @@ import { Formik } from 'formik';
 
 const Carrito = () => {
     const [comprado,setComprado] = useState(false);
+    const [isErrors,setIsErrors] = useState(true);
     const { cartList,totalPrice,emptyCart,orderId,clear,removeItem,buyCart,clearWithoutEmptyCart } = useCartContext();
 
     const { user } = useUserContext();
 
     const changeSetComprado = () => {
-        setTimeout(() => {
-            setComprado(true);
-            clearWithoutEmptyCart();
-        },4000);
+        if (isErrors) {
+            console.log('hay que terminar de completar el formulario');
+        } else {
+            setTimeout(() => {
+                setComprado(true);
+                clearWithoutEmptyCart();
+            },4000);
+        }
+
     }
 
     return (
@@ -68,7 +74,6 @@ const Carrito = () => {
                                             }}
                                             validate={(valores) => {
                                                 let errores = {};
-
                                                 // Validar password
                                                 if (!valores.name) {
                                                     errores.name = 'Porfavor ingrese un nombre';
@@ -89,6 +94,11 @@ const Carrito = () => {
                                                 } else if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(valores.email)) {
                                                     errores.email = 'El correo solo puede contener letras, números, puntos, guiones y guión bajo. Y no te olvides del @';
                                                 }
+                                                if (Object.keys(errores).length > 0) {
+                                                    setIsErrors(true);
+                                                } else {
+                                                    setIsErrors(false);
+                                                }
                                                 return errores;
                                             }}
                                         >
@@ -108,8 +118,7 @@ const Carrito = () => {
                                                         <input id='email' type='email' values={values.email} onChange={handleChange} onBlur={handleBlur} placeholder='Ingrese su email' />
                                                         {touched.email && errors.email && <p>{errors.email}</p>}
                                                     </div>
-                                                    {(Object.keys(errors).length === 0) && <button type='submit' onClick={() => { changeSetComprado() }}>Comprar productos</button>}
-
+                                                    <button type='submit' onClick={() => { changeSetComprado(errors) }}>Comprar productos</button>
                                                 </form>
                                             )}
                                         </Formik>

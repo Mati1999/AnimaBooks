@@ -4,6 +4,7 @@
     @include medidas(100%, 100%);
     display: flex;
     flex-direction: column;
+    padding: 1rem;
 
     input[type=number]::-webkit-inner-spin-button,
     input[type=number]::-webkit-outer-spin-button {
@@ -58,7 +59,22 @@
 }
 
 .editarDB {
-    @include medidas(25%, 100%);
+    @include medidas(25%, 10%);
+    color: $colorSecundario;
+    border: 2px solid $colorSecundario;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    border-radius: .5rem;
+    transition: all .3s ease;
+
+    &:hover {
+        color: $colorPrimario;
+        background: $colorSecundario;
+        cursor: pointer;
+    }
 }
 
 .createNewMangaInDb {

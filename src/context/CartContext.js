@@ -69,6 +69,9 @@ function CartContextPrvovider({ children }) {
         const batch = writeBatch(db)
         batch.update(queryDb,{ 'cart': [] });
         batch.commit();
+        setTimeout(() => {
+            setEmptyCart(true);
+        },20000);
     }
 
     const removeItem = (item) => {

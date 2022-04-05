@@ -21,11 +21,13 @@ const CartWidget = () => {
                 :
                 <div className='cartWidget'>
                     <NavLink to='/cart'>
-                        <FaShoppingCart className='cart' />
+                        <div>
+                            <FaShoppingCart className='cart' />
+                            <span className='iconoCarrito'>{cantidad}</span>
+                        </div>
+
                         <p>Carrito</p>
                     </NavLink>
-
-                    <span className='iconoCarrito'>{cantidad}</span>
                 </div>
             }
         </>

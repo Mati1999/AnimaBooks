@@ -4,7 +4,6 @@
   @include medidas(100%, 2rem);
   display: flex;
   justify-content: flex-start;
-  position: relative;
 
   &:hover {
     cursor: pointer;
@@ -27,6 +26,10 @@
     border-bottom: 2px solid transparent;
     transition: all .3s ease;
   }
+
+  div {
+    position: relative;
+  }
 }
 
 .cart {
@@ -37,7 +40,7 @@
 .iconoCarrito {
   position: absolute;
   top: -25%;
-  right: 0;
+  right: -40%;
   @include medidas(1.5rem, 1.5rem);
   background: $colorTerciario;
   color: $colorPrimario;

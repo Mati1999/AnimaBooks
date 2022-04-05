@@ -10,7 +10,7 @@ import { useUserContext } from '../context/UserContext';
 
 
 const Menu = () => {
-    const [widthMenu,setwidthMenu] = useState('18%');
+    const [widthMenu,setwidthMenu] = useState('5rem');
     // const { signIngWithGoogle } = useUserContext()
 
     const { user } = useUserContext();
@@ -23,8 +23,8 @@ const Menu = () => {
         <div
             className='menu'
             style={growMenu}
-            onMouseOver={() => { setwidthMenu('18%') }}
-            onMouseLeave={() => { setwidthMenu('18%') }}
+            onMouseOver={() => { setwidthMenu('15rem') }}
+            onMouseLeave={() => { setwidthMenu('5rem') }}
         >
             <div className='menuDivItems'>
                 <NavLink className='menu__marca' to='/'>

@@ -38,7 +38,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 1rem;
+    padding: 2rem 1rem;
     overflow-y: auto;
     border-radius: .5rem;
     box-shadow: inset 0px 0px 10px $colorTerciario;
@@ -100,6 +100,7 @@
         &:hover {
             color: $colorPrimario;
             background: $colorTerciario;
+            cursor: pointer;
         }
     }
 }
@@ -120,15 +121,16 @@
 .btnVaciarCarrito {
     @include medidas(40%, 3rem);
     background: transparent;
-    border: 2px solid $colorTerciario;
+    border: 2px solid $colorSecundario;
     border-radius: .5rem;
-    color: $colorTerciario;
+    color: $colorSecundario;
     font-size: 1.2rem;
     transition: all .3s ease;
 
     &:hover {
         color: $colorPrimario;
-        background: $colorTerciario;
+        background: $colorSecundario;
+        cursor: pointer;
     }
 }
 
@@ -154,6 +156,22 @@
         &:focus {
             border: 2px solid $colorSecundario;
             outline: none;
+        }
+    }
+
+    button {
+        @include medidas(50%, 3rem);
+        background: transparent;
+        border: 2px solid $colorTerciario;
+        border-radius: .5rem;
+        color: $colorTerciario;
+        font-size: 1.2rem;
+        transition: all .3s ease;
+
+        &:hover {
+            color: $colorPrimario;
+            background: $colorTerciario;
+            cursor: pointer;
         }
     }
 }
