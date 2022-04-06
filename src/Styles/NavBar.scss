@@ -9,6 +9,64 @@
   background: $colorSecundario;
   transition: all .3s ease-out;
   overflow-x: hidden;
+
+  @include mobile {
+    @include medidas(100vw, 100%);
+    left: 100%;
+  }
+}
+
+.menuButton {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include medidas(50px, 50px);
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: all .3s ease-out;
+
+  span {
+    @include medidas(30px, 2px);
+    display: block;
+    background: $colorSecundario;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    @include medidas(30px, 2px);
+    background: $colorSecundario;
+    transition: all .3s ease-out;
+  }
+
+  &:before {
+    top: 30%;
+    left: 20%;
+  }
+
+  &:after {
+    top: 70%;
+    left: 20%;
+  }
+}
+
+.active::before {
+  transform: translateY(10px) rotate(45deg);
+  background: $colorPrimario;
+}
+
+.active::after {
+  transform: translateY(-10px) rotate(-45deg);
+  background: $colorPrimario;
 }
 
 .menuDivItems {
