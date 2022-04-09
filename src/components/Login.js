@@ -3,16 +3,17 @@ import { auth } from '../firebase/config';
 import { signInWithEmailAndPassword,setPersistence,browserSessionPersistence } from 'firebase/auth';
 import { useUserContext } from '../context/UserContext';
 import { Formik } from 'formik';
+import '../Styles/Login.scss';
 
 const Login = () => {
     const [isRegistrando,setIsRegistrando] = useState(false);
 
-    const { registrarUsuario } = useUserContext();
+    const { signUpUser } = useUserContext();
 
     const submitHandler = (email,password) => {
         if (isRegistrando) {
             //registramos
-            registrarUsuario(email,password);
+            signUpUser(email,password);
         } else {
             //login
             setPersistence(auth,browserSessionPersistence)
@@ -29,7 +30,7 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className='login'>
 
             <h1>{isRegistrando ? 'Registrate' : 'Inicia Sesión'}</h1>
 
@@ -63,26 +64,31 @@ const Login = () => {
                 }}
             >
                 {({ values,errors,touched,handleSubmit,handleChange,handleBlur }) => (
-                    <form onSubmit={handleSubmit}>
-                        <label>
-                            Correo Electrónico:
-                            <input type="email" id='email' placeholder='Email' values={values.email} onChange={handleChange} onBlur={handleBlur} />
-                        </label>
-                        {touched.email && errors.email && <p>{errors.email}</p>}
-                        <label>
-                            Contraseña:
-                            <input type="password" id='password' placeholder='Password' values={values.password} onChange={handleChange} onBlur={handleBlur} />
-                        </label>
-                        {touched.password && errors.password && <p>{errors.password}</p>}
+                    <form className='formLogin' onSubmit={handleSubmit}>
+                        <div>
+                            <label>
+                                Correo Electrónico:
+                                <input type="email" id='email' placeholder='Email' values={values.email} onChange={handleChange} onBlur={handleBlur} />
+                            </label>
+                            {touched.email && errors.email && <p>{errors.email}</p>}
+                        </div>
+                        <div>
+                            <label>
+                                Contraseña:
+                                <input type="password" id='password' placeholder='Password' values={values.password} onChange={handleChange} onBlur={handleBlur} />
+                            </label>
+                            {touched.password && errors.password && <p>{errors.password}</p>}
+                        </div>
 
                         <input
+                            className='btnSubmitLogin'
                             type="submit"
                             value={isRegistrando ? 'Registrar' : 'Iniciar Sesión'}
                         />
                     </form>
                 )}
             </Formik>
-            <button onClick={() => setIsRegistrando(!isRegistrando)}>
+            <button className='btnChangeLoginState' onClick={() => setIsRegistrando(!isRegistrando)}>
                 {isRegistrando ? 'Ya tengo una cuenta' : 'Quiero registrarme'}
             </button>
         </div>

@@ -1,6 +1,6 @@
 import '../Styles/ItemListContainer.scss'
 import React,{ useState,useEffect } from 'react'
-import Titulo from './Titulo';
+import Title from './Title';
 import ItemList from './ItemList';
 import Loader from './Loader';
 import { useParams } from 'react-router-dom';
@@ -12,15 +12,15 @@ const ItemListContainer = () => {
     const [mangas,setmangas] = useState([]);
     const [loading,setloading] = useState(true);
 
-    const { categoriaId } = useParams()
+    const { categoryId } = useParams()
 
 
     useEffect(() => {
         const db = getFirestore();
         const queryCollection = collection(db,'mangas');
-        if (categoriaId) {
+        if (categoryId) {
             // lógica para traer la categoria de mangas
-            const queryFilter = query(queryCollection,where('genero','==',categoriaId));
+            const queryFilter = query(queryCollection,where('genre','==',categoryId));
             getDocs(queryFilter)
                 .then(res => setmangas(res.docs.map(item => ({ id: item.id,...item.data() }))))
                 .catch(err => console.log(err))
@@ -32,7 +32,7 @@ const ItemListContainer = () => {
                 .catch(err => console.log(err))
                 .finally(() => setloading(false))
         }
-    },[categoriaId]);
+    },[categoryId]);
 
     return (
         <div className='listContainer'>
@@ -41,12 +41,12 @@ const ItemListContainer = () => {
             {loading
                 ?
                 <div className='itemListContainerLoader'>
-                    <Titulo contenido='Descargando contenido' />
+                    <Title contenido='Descargando contenido' />
                     <Loader />
                 </div>
                 :
                 <div className='listContainerContent'>
-                    <Titulo contenido={categoriaId ? categoriaId : 'Inicio'} />
+                    <Title contenido={categoryId ? categoryId : 'Inicio'} />
                     <ItemList mangas={mangas} />
                 </div>
             }

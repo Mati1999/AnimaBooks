@@ -32,8 +32,11 @@ const UserView = () => {
                                         {order.items.map((item,i) => {
                                             return (
                                                 <li key={i}>
-                                                    <h5>{item.title}</h5>
-                                                    <span>{item.amount} unidades</span>
+                                                    <img src={item.image} alt="" />
+                                                    <div>
+                                                        <h5>{item.title}</h5>
+                                                        <span>{item.amount} unidades</span>
+                                                    </div>
                                                 </li>
                                             )
                                         })

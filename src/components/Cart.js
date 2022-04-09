@@ -1,29 +1,49 @@
 import React,{ useState } from 'react'
 import { useCartContext } from '../context/CartContext';
-import { collection,getFirestore,addDoc,doc,updateDoc,query,where,documentId,writeBatch,getDocs } from 'firebase/firestore';
 import '../Styles/Carrito.scss';
-import Button from './Button';
 import { useUserContext } from '../context/UserContext';
 import { Formik } from 'formik';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
-const Carrito = () => {
-    const [comprado,setComprado] = useState(false);
+const Cart = () => {
+    const [bought,setBought] = useState(false);
     const [isErrors,setIsErrors] = useState(true);
     const { cartList,totalPrice,emptyCart,orderId,clear,removeItem,buyCart,clearWithoutEmptyCart } = useCartContext();
 
     const { user } = useUserContext();
 
-    const changeSetComprado = () => {
+    const changeSetBought = () => {
         if (isErrors) {
             console.log('hay que terminar de completar el formulario');
         } else {
             setTimeout(() => {
-                setComprado(true);
+                setBought(true);
                 clearWithoutEmptyCart();
             },4000);
         }
+    }
 
+    const errorsInFormNotification = () => {
+        toast.info('Lo lamento, debes completar los campos de forma correcta.',{
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            style: {
+                background: '#2B494B',
+                color: '#fdfffa'
+            }
+        })
+    }
+
+    const errorsInForm = (e) => {
+        e.preventDefault();
+        errorsInFormNotification();
     }
 
     return (
@@ -39,31 +59,32 @@ const Carrito = () => {
                         ?
                         <div className='noItemsInCart'>
                             <h2> No hay Items en el carrito</h2>
-
-                            <Button clase={"goToCartButton"} content={'Ir al catálogo'} event={() => { '' }} goTo={'/'} />
+                            <Link className="linkButtons" to='/'>
+                                <button className="goToCartButton">Ir al catálogo</button>
+                            </Link>
                         </div>
                         :
-                        <div className='carrito'>
+                        <div className='cart'>
                             <h2>Carrito de compras</h2>
-                            <div className='carritoDetalle'>
-                                <div className='carritoProductos'>
+                            <div className='cartDetail'>
+                                <div className='cartProducts'>
                                     {cartList.map((item) =>
-                                        <li className='carritoProducto' key={item.id}>
-                                            <div className='productoImgCont'>
+                                        <li className='cartProduct' key={item.id}>
+                                            <div className='productImgCont'>
                                                 <img src={item.picture} alt="" />
                                             </div>
-                                            <div className='productoDetalle'>
+                                            <div className='productDetail'>
                                                 <h3>{item.title}</h3>
-                                                <p>Cantidad: {item.cantidad} </p>
-                                                <span>$ {item.price * item.cantidad}</span>
+                                                <p>Cantidad: {item.quantity} </p>
+                                                <span>$ {item.price * item.quantity}</span>
                                             </div>
                                             <button type='text' onClick={() => { removeItem(item) }}>Eliminar</button>
                                         </li>
                                     )}
                                 </div>
-                                {!comprado
+                                {!bought
                                     ?
-                                    <div className='carritoDetalleGral'>
+                                    <div className='cartGeneralDetail'>
                                         <span>Precio total: $ {totalPrice}</span>
 
                                         <Formik
@@ -103,7 +124,7 @@ const Carrito = () => {
                                             }}
                                         >
                                             {({ values,errors,touched,handleChange,handleBlur }) => (
-                                                <form className='buyCartForm' onSubmit={buyCart}>
+                                                <form id='formValid' className='buyCartForm' onSubmit={isErrors ? errorsInForm : buyCart}>
                                                     <div>
                                                         <input id='name' type='text' values={values.name} onChange={handleChange} onBlur={handleBlur} placeholder='Ingrese su nombre' />
                                                         {touched.name && errors.name && <p>{errors.name}</p>}
@@ -118,13 +139,14 @@ const Carrito = () => {
                                                         <input id='email' type='email' values={values.email} onChange={handleChange} onBlur={handleBlur} placeholder='Ingrese su email' />
                                                         {touched.email && errors.email && <p>{errors.email}</p>}
                                                     </div>
-                                                    <button type='submit' onClick={() => { changeSetComprado(errors) }}>Comprar productos</button>
+                                                    <button type='submit' onClick={() => { changeSetBought() }}>Comprar productos</button>
+
                                                 </form>
                                             )}
                                         </Formik>
                                     </div>
                                     :
-                                    <div className='carritoDetalleGral'>
+                                    <div className='cartGeneralDetail'>
                                         <div>
                                             <h3>Muchas gracias por adquirir nuestros productos</h3>
                                             <p>{`Este es el código único para tu compra: 
@@ -133,7 +155,7 @@ const Carrito = () => {
                                     </div>
                                 }
                             </div>
-                            <button className='btnVaciarCarrito' onClick={() => { clear() }}>Vaciar carrito</button>
+                            <button className='btnEmptyCart' onClick={() => { clear() }}>Vaciar carrito</button>
                         </div>
                     }
                 </>
@@ -142,4 +164,4 @@ const Carrito = () => {
     )
 }
 
-export default Carrito
+export default Cart

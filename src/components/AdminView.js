@@ -7,7 +7,7 @@ import { ref } from 'firebase/storage';
 
 const AdminView = () => {
     const [mangasAdmin,setMangasAdmin] = useState([]);
-    const [editar,setEditar] = useState(false);
+    const [edit,setEdit] = useState(false);
     const [DbEdited,setDbEdited] = useState(false);
     const [newDb,setNewDb] = useState([]);
 
@@ -18,7 +18,7 @@ const AdminView = () => {
             .then(res => setMangasAdmin(res.docs.map(item => ({ id: item.id,...item.data() }))))
     },[]);
 
-    const editantoInputs = (e) => {
+    const editingInputs = (e) => {
         let inputId = e.target.id;
         let inputValue = e.target.value;
         let inputLiId = e.target.parentNode.parentNode.id;
@@ -32,16 +32,16 @@ const AdminView = () => {
         return newDb;
     }
 
-    const editarDb = async (e) => {
+    const editDb = async (e) => {
         e.preventDefault();
         const db = getFirestore();
         const queryCollection = collection(db,'mangas');
-        const queryActualizarStock = await query(
+        const queryUpdateStock = await query(
             queryCollection,
             where(documentId(),'in',newDb.map(item => item.id))
         );
         const batch = writeBatch(db)
-        await getDocs(queryActualizarStock)
+        await getDocs(queryUpdateStock)
             .then(resp => resp.docs.forEach(res => batch.update(res.ref,
                 {
                     price: newDb.find(item => item.id === res.id).price,
@@ -49,7 +49,7 @@ const AdminView = () => {
                 }
             ))).finally(console.log('Edit completado'))
         batch.commit();
-        setEditar(false);
+        setEdit(false);
         setMangasAdmin(newDb);
     }
 
@@ -64,7 +64,7 @@ const AdminView = () => {
         let newMangaTitle = e.target.parentNode.children.title.value;
         let newMangaPrice = e.target.parentNode.children.price.value;
         let newMangaStock = e.target.parentNode.children.stock.value;
-        let newMangaGenero = e.target.parentNode.children.genero.value;
+        let newMangaGenre = e.target.parentNode.children.genre.value;
         let newMangaPictureFile = e.target.parentNode.children.img.files[0];
         let newMangaPicture = e.target.parentNode.children.img.files[0].name;
 
@@ -80,7 +80,7 @@ const AdminView = () => {
             title: newMangaTitle,
             price: newMangaPrice,
             stock: newMangaStock,
-            genero: newMangaGenero,
+            genre: newMangaGenre,
             picture: newMangaPictureUrl
         }
         const db = getFirestore();
@@ -89,7 +89,7 @@ const AdminView = () => {
             .then(res => console.log(res))
             .catch(err => console.log(err))
             .finally(() => console.log('Manga creado'))
-        setEditar(false);
+        setEdit(false);
         setMangasAdmin([...mangasAdmin,newManga]);
     }
 
@@ -98,13 +98,13 @@ const AdminView = () => {
 
             <h1>Perfil del administrador</h1>
             <h2>Configuración de productos en la base de datos</h2>
-            <form onSubmit={editarDb} className='adminViewProducts'>
+            <form onSubmit={editDb} className='adminViewProducts'>
                 {
                     mangasAdmin.map(item =>
-                        !editar ?
+                        !edit ?
                             <li id={item.id} key={item.id}>
                                 <h5>Nombre: {item.title}</h5>
-                                <h6>Genero: {item.genero}</h6>
+                                <h6>Genero: {item.genre}</h6>
                                 <p>Stock disponible: {item.stock}</p>
                                 <span>Precio: $ {item.price}</span>
                                 <button type='text' onClick={() => deleteMangaFromDb(item.id)}>Eliminar</button>
@@ -112,21 +112,21 @@ const AdminView = () => {
                             :
                             <li id={item.id} key={item.id}>
                                 <h5>Nombre: {item.title}</h5>
-                                <h6>Genero: {item.genero}</h6>
-                                <p>Stock disponible: <input id='stock' type="number" placeholder={item.stock} onChange={editantoInputs} /></p>
-                                <span>Precio: $ <input id='price' type="number" placeholder={item.price} onChange={editantoInputs} /></span>
+                                <h6>Genero: {item.genre}</h6>
+                                <p>Stock disponible: <input id='stock' type="number" placeholder={item.stock} onChange={editingInputs} /></p>
+                                <span>Precio: $ <input id='price' type="number" placeholder={item.price} onChange={editingInputs} /></span>
                                 <button type='text' onClick={() => deleteMangaFromDb(item.id)}>Eliminar</button>
                             </li>
                     )
                 }
                 {
-                    editar ?
+                    edit ?
                         <div className='createNewMangaInDb'>
                             <h3>Crear nuevo producto</h3>
                             <li>
                                 <input id='img' type="file" />
                                 <input id='title' type="text" placeholder='Nombre' />
-                                <input id='genero' type="text" placeholder='Genero' />
+                                <input id='genre' type="text" placeholder='Genero' />
                                 <input id='stock' type="number" placeholder='Stock' />
                                 <input id='price' type="number" placeholder='Precio' />
                                 <button type='text' onClick={createNewManga}>Crear nuevo producto</button>
@@ -135,13 +135,13 @@ const AdminView = () => {
                         :
                         ''
                 }
-                {!editar ?
-                    <button className='editarDB' type='text' onClick={() => setEditar(true)}>Editar base de datos</button>
+                {!edit ?
+                    <button className='editDB' type='text' onClick={() => setEdit(true)}>Editar base de datos</button>
                     :
-                    <div>
+                    <div className='addCancelChanges'>
                         <button type='submit'>Aplicar cambios</button>
                         <button type='text' onClick={() => {
-                            setEditar(false)
+                            setEdit(false)
                             setDbEdited(false)
                         }
                         }>Cancelar</button>

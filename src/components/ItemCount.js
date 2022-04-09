@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import '../Styles/ItemCount.scss'
-import { toast } from 'react-toastify';
-import Button from './Button';
+import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 import { useUserContext } from '../context/UserContext';
 
 const ItemCount = ({ stock,initial,addOnCart,prodInfo,itemAdd }) => {
@@ -56,34 +56,36 @@ const ItemCount = ({ stock,initial,addOnCart,prodInfo,itemAdd }) => {
     })
   }
 
-  const restarUno = () => {
+  const minusOne = () => {
     if (count > initial) setCount(count - 1)
     else cantBeCero();
   }
 
-  const sumarUno = () => {
+  const plusOne = () => {
     if (count < stock) setCount(count + 1)
     else noStock()
   }
 
   return (
-    <div className='contador'>
-      <div className='btnContadorContainer'>
-        <button className='btnContador' type='text' onClick={restarUno}>-</button>
+    <div className='counter'>
+      <div className='btnCounterContainer'>
+        <button className='btnCounter' type='text' onClick={minusOne}>-</button>
         <span>{count}</span>
-        <button className='btnContador' type='text' onClick={sumarUno}>+</button>
+        <button className='btnCounter' type='text' onClick={plusOne}>+</button>
       </div>
-      <div className='btnAgregarCarritoContainer'>
-        <Button clase={"btnAgregarCarrito"} type={'text'} content={'Agregar al carrito'} event={() => {
-          if (user) {
-            itemAdd(count,prodInfo)
-            addOnCart(true);
-          } else {
-            logInToAddItem()
-          }
-        }} goTo={''} />
+      <div className='btnAddCounterContainer'>
+        <Link className="linkButtons" to=''>
+          <button className="btnAddCart" type='text' onClick={() => {
+            if (user) {
+              itemAdd(count,prodInfo)
+              addOnCart(true);
+            } else {
+              logInToAddItem()
+            }
+          }}>Agregar al carrito</button>
+        </Link>
       </div>
-    </div>
+    </div >
   )
 }
 

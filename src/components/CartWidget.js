@@ -6,15 +6,15 @@ import '../Styles/CartWidget.scss'
 
 const CartWidget = () => {
 
-    const { cantidad } = useCartContext()
+    const { quantity } = useCartContext()
 
     return (
         <>
-            {cantidad === 0
+            {quantity === 0
                 ?
                 <div className='cartWidget'>
                     <NavLink to='/cart'>
-                        <FaShoppingCart className='cart' />
+                        <FaShoppingCart className='cartIcon' />
                         <p>Carrito</p>
                     </NavLink>
                 </div>
@@ -22,8 +22,8 @@ const CartWidget = () => {
                 <div className='cartWidget'>
                     <NavLink to='/cart'>
                         <div>
-                            <FaShoppingCart className='cart' />
-                            <span className='iconoCarrito'>{cantidad}</span>
+                            <FaShoppingCart className='cartIcon' />
+                            <span className='cartIconSpan'>{quantity}</span>
                         </div>
 
                         <p>Carrito</p>

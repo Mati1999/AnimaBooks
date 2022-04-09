@@ -29,14 +29,14 @@
 }
 
 .ordersContainer {
-    @include medidas(100%, 70%);
+    @include medidas(95%, 70%);
     padding: 1rem;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    border-top: 1px solid $colorSecundario;
-    border-bottom: 1px solid $colorSecundario;
+    border: 1px solid $colorSecundario;
+    border-radius: .5rem;
     overflow-y: auto;
     box-shadow: inset 0px 0px 10px $colorTerciario;
 
@@ -55,7 +55,7 @@
 }
 
 .order {
-    @include medidas(100%, 100%);
+    @include medidas(48%, 100%);
     margin: 0 0 3rem 0;
     display: flex;
     flex-direction: column;
@@ -66,11 +66,45 @@
 
     ul {
         padding: 1rem;
+        @include medidas(100%, 100%);
+        display: flex;
+        flex-direction: column;
+        overflow-y: overlay;
+
+        &::-webkit-scrollbar {
+            @include medidas(10px, 100%);
+            border-radius: .5rem;
+            background-color: $colorSecundario;
+            box-shadow: -2px 0px 5px $colorTerciario;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: .5rem;
+            background-color: $colorTerciario;
+        }
+    }
+
+    img {
+        @include medidas(20%, 100%);
+        border-radius: .5rem;
+        object-fit: unset;
+        border-radius: .5rem;
     }
 
     li {
+        @include medidas(100%, 90%);
         margin: 0 0 .5rem 0;
         list-style-type: none;
+        display: flex;
+
+        div {
+            @include medidas(100%, 100%);
+            margin: 0 0 0 2rem;
+        }
+
+        h5 {
+            font-size: 1.5rem;
+        }
     }
 
     p {
@@ -88,6 +122,11 @@
     border-bottom: 1px solid $colorSecundario;
 
     h5 {
+        font-size: 1.2rem;
         margin: 0 1rem 0 0;
+    }
+
+    h6 {
+        font-size: 1rem;
     }
 }

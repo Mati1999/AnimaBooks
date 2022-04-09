@@ -1,7 +1,7 @@
 @import 'variables.scss';
 
 .noItemsInCart {
-    @include medidas(100%, 100vh);
+    @include medidas(100%, 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +13,7 @@
     }
 }
 
-.carrito {
+.cart {
     @include medidas(100%, 100vh);
     display: flex;
     flex-direction: column;
@@ -26,14 +26,14 @@
     }
 }
 
-.carritoDetalle {
+.cartDetail {
     @include medidas(100%, 90%);
     display: flex;
     justify-content: space-between;
     padding: 1rem 0;
 }
 
-.carritoProductos {
+.cartProducts {
     @include medidas(50%, 100%);
     display: flex;
     flex-direction: column;
@@ -57,27 +57,27 @@
     }
 }
 
-.carritoProducto {
-    @include medidas(60%, 30%);
+.cartProduct {
+    @include medidas(90%, 40%);
     list-style-type: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0 10% 0;
+    margin: 0 0 5% 0;
 
-    .productoImgCont {
-        @include medidas(30%, 100%);
+    .productImgCont {
+        @include medidas(50%, 100%);
         display: flex;
         align-items: center;
     }
 
     img {
-        width: 100%;
-        object-fit: cover;
+        @include medidas(100%, 100%);
+        object-fit: contain;
     }
 
-    .productoDetalle {
-        @include medidas(40%, 100%);
+    .productDetail {
+        @include medidas(80%, 100%);
         padding: 1rem 0;
         display: flex;
         flex-direction: column;
@@ -105,7 +105,7 @@
     }
 }
 
-.carritoDetalleGral {
+.cartGeneralDetail {
     @include medidas(45%, 100%);
     display: flex;
     flex-direction: column;
@@ -118,7 +118,7 @@
     }
 }
 
-.btnVaciarCarrito {
+.btnEmptyCart {
     @include medidas(40%, 3rem);
     background: transparent;
     border: 2px solid $colorSecundario;
@@ -139,10 +139,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 
     div {
         @include medidas(100%, 12%);
-        margin: 0 0 10% 0;
+
     }
 
     input {
@@ -173,5 +174,23 @@
             background: $colorTerciario;
             cursor: pointer;
         }
+    }
+}
+
+.goToCartButton {
+    width: 60%;
+    border: 2px solid $colorSecundario;
+    border-radius: .5rem;
+    background: $colorPrimario;
+    color: $colorSecundario;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: .5rem 1rem;
+    transition: all .3s ease;
+
+    &:hover {
+        background: $colorSecundario;
+        color: $colorPrimario;
+        cursor: pointer;
     }
 }

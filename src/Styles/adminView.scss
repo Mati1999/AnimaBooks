@@ -56,9 +56,21 @@
             @include medidas(30%, auto);
         }
     }
+
+    button {
+        border: 2px solid $colorSecundario;
+        border-radius: .5rem;
+        padding: .5rem;
+        transition: all .3s ease;
+
+        &:hover {
+            background-color: $colorSecundario;
+            color: $colorPrimario;
+        }
+    }
 }
 
-.editarDB {
+.editDB {
     @include medidas(25%, 10%);
     color: $colorSecundario;
     border: 2px solid $colorSecundario;
@@ -81,11 +93,25 @@
     @include medidas(100%, 100%);
 
     li {
+        @include medidas(80%, 40%);
         display: flex;
-        justify-content: space-between
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    input:first-child {
+        border: none;
     }
 
     input {
-        @include medidas(20%, 80%);
+        @include medidas(15%, 50%);
+        border: 1px solid $colorTerciario;
+        border-radius: .5rem;
+        padding: .5rem;
     }
+}
+
+.addCancelChanges {
+    display: flex;
+    gap: 1rem;
 }

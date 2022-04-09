@@ -1,8 +1,7 @@
 import React,{ useState,createContext,useContext } from "react";
 import { auth } from '../firebase/config';
-import { signInWithPopup,GoogleAuthProvider,onAuthStateChanged,createUserWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged,createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore,doc,getDoc,setDoc } from "firebase/firestore";
-import { useCartContext } from "./CartContext";
 
 const UserContext = createContext();
 
@@ -20,13 +19,13 @@ function UserContextProvider({ children }) {
     const getCartYRol = async (uid) => {
         const docuRef = doc(db,`usuarios/${uid}`);
         const docuCifrada = await getDoc(docuRef);
-        const infoFinal = docuCifrada.data().rol;
-        const cartFinal = docuCifrada.data().cart;
+        const finalInfo = docuCifrada.data().rol;
+        const finalCart = docuCifrada.data().cart;
         const userOrders = docuCifrada.data().orders;
-        setRol(infoFinal);
-        setCart(cartFinal);
+        setRol(finalInfo);
+        setCart(finalCart);
         setUserOrders(userOrders);
-        return [infoFinal,cartFinal,userOrders];
+        return [finalInfo,finalCart,userOrders];
     }
 
     const setUserWithFirebaseAndRol = (usuarioFirebase) => {
@@ -53,25 +52,13 @@ function UserContextProvider({ children }) {
 
     // Registrar usuario nuevo
 
-    async function registrarUsuario(email,password) {
+    async function signUpUser(email,password) {
         const infoUsuario = await createUserWithEmailAndPassword(auth,email,password).then((usuarioFirabase) => {
             return usuarioFirabase;
         });
         const docRef = doc(db,`usuarios/${infoUsuario.user.uid}`);
         setDoc(docRef,{ correo: email,rol: 'usuario',cart: [],orders: [] });
     }
-
-    //  Authentication
-    // const signIngWithGoogle = () => {
-    //     const provider = new GoogleAuthProvider();
-    //     signInWithPopup(auth,provider)
-    //         .then((res) => {
-    //             const user = res.user;
-    //             console.log(user);
-    //         }).catch((err) => {
-    //             console.log(err);
-    //         });
-    // }
 
     return (
         <UserContext.Provider value={
@@ -81,8 +68,7 @@ function UserContextProvider({ children }) {
                 cart,
                 userOrders,
                 setRol,
-                registrarUsuario,
-                // signIngWithGoogle
+                signUpUser,
             }}>
             {children}
         </UserContext.Provider>

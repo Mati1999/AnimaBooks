@@ -9,7 +9,7 @@ const CartContext = createContext([]);
 export const useCartContext = () => useContext(CartContext);
 function CartContextPrvovider({ children }) {
     const [cartList,setCartList] = useState([]);
-    const [cantidad,setCantidad] = useState(0);
+    const [quantity,setQuantity] = useState(0);
     const [totalPrice,setTotalPrice] = useState(0);
     const [emptyCart,setEmptyCart] = useState(true);
     const [orderId,setOrderId] = useState('');
@@ -22,13 +22,13 @@ function CartContextPrvovider({ children }) {
     useEffect(() => {
         if (cart.length >= 1) {
             setCartList(cart);
-            let cantidad = cart.reduce((total,item) => total + item.cantidad,0);
-            setCantidad(cantidad);
-            setTotalPrice(cart.reduce((acc,item) => acc + (item.price * item.cantidad),0));
+            let quantity = cart.reduce((total,item) => total + item.quantity,0);
+            setQuantity(quantity);
+            setTotalPrice(cart.reduce((acc,item) => acc + (item.price * item.quantity),0));
             setEmptyCart(false);
         } else {
             setCartList([]);
-            setCantidad(0);
+            setQuantity(0);
             setTotalPrice(0);
             setEmptyCart(true);
         }
@@ -46,7 +46,7 @@ function CartContextPrvovider({ children }) {
     const clear = () => {
         setCartList([]);
         setEmptyCart(true);
-        setCantidad(0);
+        setQuantity(0);
         getTotalPrice(0)
         const queryDb = doc(db,'usuarios',user.uid);
         const batch = writeBatch(db)
@@ -57,13 +57,13 @@ function CartContextPrvovider({ children }) {
     const clearCartStatus = () => {
         setCartList([]);
         setEmptyCart(true);
-        setCantidad(0);
+        setQuantity(0);
         getTotalPrice(0)
     }
 
     const clearWithoutEmptyCart = () => {
         setCartList([]);
-        setCantidad(0);
+        setQuantity(0);
         getTotalPrice(0)
         const queryDb = doc(db,'usuarios',user.uid);
         const batch = writeBatch(db)
@@ -76,8 +76,8 @@ function CartContextPrvovider({ children }) {
 
     const removeItem = (item) => {
         setCartList(cartList.filter(manga => manga.id !== item.id));
-        setCantidad(cantidad - item.cantidad);
-        precioTotal = totalPrice - (item.price * item.cantidad);
+        setQuantity(quantity - item.quantity);
+        precioTotal = totalPrice - (item.price * item.quantity);
         getTotalPrice(precioTotal)
         const queryDb = doc(db,'usuarios',user.uid);
         const batch = writeBatch(db)
@@ -93,7 +93,7 @@ function CartContextPrvovider({ children }) {
     }
 
     const getCantidad = (cant) => {
-        setCantidad(cantidad + cant);
+        setQuantity(quantity + cant);
     }
 
     const getTotalPrice = (price) => {
@@ -105,7 +105,7 @@ function CartContextPrvovider({ children }) {
 
         let manga = cartList.find(manga => manga.id === prod.id);
 
-        stockSobrante = (manga.stock - manga.cantidad);
+        stockSobrante = (manga.stock - manga.quantity);
 
         if (stockSobrante < cant) {
             return false;
@@ -139,7 +139,7 @@ function CartContextPrvovider({ children }) {
     }
 
     const noMoreStockNotification = () => {
-        toast.info('Lo lamento, la cantidad que quiere agregar supera al stock disponible',{
+        toast.info('Lo lamento, la quantity que quiere agregar supera al stock disponible',{
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,
@@ -154,15 +154,15 @@ function CartContextPrvovider({ children }) {
         })
     }
 
-    //Función que me ejecuta la funcíon isInCart y luego agrega un producto al carrito o le aumenta la cantidad. Luego setea la variable addOnCart para verificar si se añadió un producto y también envía los datos del nombre y cantidad a la función de la notificación (addItemToCart) que se reproduce cuando agregamos un producto al carrito.
+    //Función que me ejecuta la funcíon isInCart y luego agrega un producto al carrito o le aumenta la quantity. Luego setea la variable addOnCart para verificar si se añadió un producto y también envía los datos del nombre y quantity a la función de la notificación (addItemToCart) que se reproduce cuando agregamos un producto al carrito.
 
     const itemAdd = (cant,itemDetail) => {
         if (isInCart(itemDetail)) {
-            addItem({ ...itemDetail,cantidad: cant })
+            addItem({ ...itemDetail,quantity: cant })
             onAddExtraFunctions(cant,itemDetail);
         } else {
             if (isStock(itemDetail,cant)) {
-                cartList.find(item => item.id === itemDetail.id).cantidad += cant;
+                cartList.find(item => item.id === itemDetail.id).quantity += cant;
                 onAddExtraFunctions(cant,itemDetail);
                 setCartList([...cartList]);
                 const queryDb = doc(db,'usuarios',user.uid);
@@ -188,7 +188,7 @@ function CartContextPrvovider({ children }) {
             },
             items:
                 cartList.map(item => (
-                    { id: item.id,title: item.title,amount: item.cantidad,price: (item.price * item.cantidad) }
+                    { id: item.id,title: item.title,amount: item.quantity,price: (item.price * item.quantity),image: item.picture }
                 ))
             ,
             date: new Date().toLocaleDateString()
@@ -215,7 +215,7 @@ function CartContextPrvovider({ children }) {
         await getDocs(queryActulizarStock)
             .then(resp => resp.docs.forEach(res => batch.update(res.ref,
                 {
-                    stock: res.data().stock - cartList.find(item => item.id === res.id).cantidad
+                    stock: res.data().stock - cartList.find(item => item.id === res.id).quantity
                 }
             )))
         batch.commit()
@@ -227,7 +227,7 @@ function CartContextPrvovider({ children }) {
         <CartContext.Provider value={{
             cartList,
             addItem,
-            cantidad,
+            quantity,
             totalPrice,
             emptyCart,
             orderId,

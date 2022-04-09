@@ -39,8 +39,8 @@
         font-size: 2rem;
     }
 
-    .detailDataGenero,
-    .detailDataPrecio {
+    .detailDataGenre,
+    .detailDataPrice {
         @include medidas(100%, 20%);
         font-size: 1.5rem;
         display: flex;
@@ -51,4 +51,34 @@
         }
     }
 
+}
+
+.linkButtons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    cursor: default;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.goToCartButton {
+    width: 60%;
+    border: 2px solid $colorSecundario;
+    border-radius: .5rem;
+    background: $colorPrimario;
+    color: $colorSecundario;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: .5rem 1rem;
+    transition: all .3s ease;
+
+    &:hover {
+        background: $colorSecundario;
+        color: $colorPrimario;
+        cursor: pointer;
+    }
 }

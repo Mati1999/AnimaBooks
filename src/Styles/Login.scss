@@ -1,0 +1,62 @@
+@import './variables.scss';
+
+.login {
+    @include medidas(100%, 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.formLogin {
+    @include medidas(80%, 50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    div {
+        @include medidas(50%, 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    label {
+        @include medidas(100%, 50%);
+        display: flex;
+        flex-direction: column;
+
+        input {
+            @include medidas(100%, 50%);
+            border: 2px solid $colorSecundario;
+            border-radius: .5rem;
+            padding: .5rem;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.btnSubmitLogin {
+    @include medidas(30%, 20%);
+    border: 2px solid $colorSecundario;
+    border-radius: .5rem;
+    transition: all .3s ease;
+
+    &:hover {
+        background-color: $colorSecundario;
+        color: $colorPrimario;
+    }
+}
+
+.btnChangeLoginState {
+    @include medidas(20%, 5%);
+    border: 2px solid $colorTerciario;
+    border-radius: .5rem;
+    transition: all .3s ease;
+
+    &:hover {
+        background-color: $colorTerciario;
+        color: $colorPrimario;
+    }
+}

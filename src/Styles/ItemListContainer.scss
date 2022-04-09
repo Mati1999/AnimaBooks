@@ -6,6 +6,19 @@
   flex-direction: column;
   align-items: center;
   overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    @include medidas(10px, 100%);
+    border-radius: .5rem;
+    background-color: $colorSecundario;
+    box-shadow: -2px 0px 5px $colorTerciario;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: .5rem;
+    background-color: $colorTerciario;
+  }
+
 }
 
 .listContainerContent {

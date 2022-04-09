@@ -32,12 +32,12 @@
   }
 }
 
-.cart {
+.cartIcon {
   color: $colorPrimario;
   @include medidas(2rem, 2rem);
 }
 
-.iconoCarrito {
+.cartIconSpan {
   position: absolute;
   top: -25%;
   right: -40%;

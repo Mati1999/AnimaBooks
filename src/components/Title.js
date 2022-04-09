@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Titulo = ({ contenido }) => {
+const Title = ({ contenido }) => {
     return (
         <h1>{contenido}</h1>
     )
 }
 
-export default Titulo
+export default Title

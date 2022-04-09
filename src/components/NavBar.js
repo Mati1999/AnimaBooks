@@ -12,7 +12,7 @@ import { useWindowContext } from '../context/WindowContext';
 
 const Menu = () => {
     const { windowWidth } = useWindowContext();
-    const [widthMenu,setwidthMenu] = useState('5rem');
+    const [widthMenu,setwidthMenu] = useState('4.5rem');
     const [translateMiniMenu,setTranslateMiniMenu] = useState('100%');
     const [menuButtonClass,setMenuButtonClass] = useState('menuButton');
     const { user } = useUserContext();
@@ -43,7 +43,7 @@ const Menu = () => {
                     className='menu'
                     style={growMenu}
                     onMouseOver={() => { setwidthMenu('15rem') }}
-                    onMouseLeave={() => { setwidthMenu('5rem') }}
+                    onMouseLeave={() => { setwidthMenu('4.5rem') }}
                 >
                     <div className='menuDivItems'>
                         <NavLink className='menu__marca' to='/'>
@@ -80,27 +80,17 @@ const Menu = () => {
                                     <NavLink to='categoria/Shounen'>
                                         <li>Shounen</li>
                                     </NavLink>
-                                    <NavLink to='categoria/Shojo'>
-                                        <li>Shojo</li>
+                                    <NavLink to='categoria/SliceOfLife'>
+                                        <li>Slice Of Life</li>
+                                    </NavLink>
+                                    <NavLink to='categoria/Coming-of-age'>
+                                        <li>Coming-of-age</li>
+                                    </NavLink>
+                                    <NavLink to='categoria/Romance'>
+                                        <li>Romance</li>
                                     </NavLink>
                                 </ul>
                             </li>
-                            <li className='menu__listaLi'>
-                                <div>
-                                    <FiUsers className='menuLiIcon marginIcon' />
-                                    <a className='menu__listaA' href=''>Sobre nosotros</a>
-                                </div>
-                            </li>
-                            <NavLink className='menuNavLinks' to='/'>
-                                <li className='menu__listaLi'>
-                                    <div>
-                                        <AiOutlineMessage className='menuLiIcon marginIcon' />
-                                        <p className='menu__listaA'>
-                                            Contacto
-                                        </p>
-                                    </div>
-                                </li>
-                            </NavLink>
                         </ul>
                     </div>
                 </div>
