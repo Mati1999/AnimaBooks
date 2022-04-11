@@ -11,6 +11,10 @@
   display: flex;
   background: $colorPrimario;
   color: $colorSecundario;
+
+  @include mobile {
+    flex-direction: column;
+  }
 }
 
 .AppMain {
@@ -21,6 +25,11 @@
   align-items: center;
   margin: 0 0 0 4.5rem;
   overflow-x: hidden;
+
+  @include mobile {
+    @include medidas(100%, 100%);
+    margin: 0;
+  }
 }
 
 .btnLogOut {

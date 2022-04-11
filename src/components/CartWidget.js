@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { useCartContext } from '../context/CartContext'
 import '../Styles/CartWidget.scss'
 
-const CartWidget = () => {
+const CartWidget = ({ menuWidt }) => {
 
     const { quantity } = useCartContext()
 
@@ -13,7 +13,7 @@ const CartWidget = () => {
             {quantity === 0
                 ?
                 <div className='cartWidget'>
-                    <NavLink to='/cart'>
+                    <NavLink to='/cart' onClick={menuWidt}>
                         <FaShoppingCart className='cartIcon' />
                         <p>Carrito</p>
                     </NavLink>

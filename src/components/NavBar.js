@@ -98,23 +98,25 @@ const Menu = () => {
 
                 :
                 <>
-                    <button className={menuButtonClass} onClick={() => clickOpenMenu()}>
-                        <span></span>
-                    </button>
+                    <div className='menuButtonContainer'>
+                        <button className={menuButtonClass} onClick={() => clickOpenMenu()}>
+                            <span></span>
+                        </button>
+                    </div>
                     <div
                         className='menu'
                         style={moveMiniMenu}
                     >
                         <div className='menuDivItems'>
-                            <NavLink className='menu__marca' to='/'>
+                            <NavLink className='menu__marca' to='/' onClick={() => clickOpenMenu()}>
                                 <div className='menu__marcaDiv'>
                                     <FaBook className='menu__marcaIcon marginIcon' />
                                     <h4>AnimaBooks</h4>
                                 </div>
                             </NavLink>
 
-                            <CartWidget></CartWidget>
-                            <NavLink className='linkUserLogIn' to='/user'
+                            <CartWidget menuWidt={clickOpenMenu}></CartWidget>
+                            <NavLink className='linkUserLogIn' to='/user' onClick={() => clickOpenMenu()}
                             //  onClick={() => { signIngWithGoogle() }}
                             >
                                 <div className='user'>
@@ -123,7 +125,7 @@ const Menu = () => {
                                 </div>
                             </NavLink>
                             <ul className='menu__lista'>
-                                <NavLink className='menuNavLinks' to='/'>
+                                <NavLink className='menuNavLinks' to='/' onClick={() => clickOpenMenu()}>
                                     <li className='menu__listaLi'>
                                         <div>
                                             <FaHome className='menuLiIcon marginIcon' />
@@ -137,30 +139,20 @@ const Menu = () => {
                                         <p className='menu__listaA'>Categorias</p>
                                     </div>
                                     <ul>
-                                        <NavLink to='categoria/Shounen'>
+                                        <NavLink to='categoria/Shounen' onClick={() => clickOpenMenu()}>
                                             <li>Shounen</li>
                                         </NavLink>
-                                        <NavLink to='categoria/Shojo'>
-                                            <li>Shojo</li>
+                                        <NavLink to='categoria/SliceOfLife' onClick={() => clickOpenMenu()}>
+                                            <li>Slice Of Life</li>
+                                        </NavLink>
+                                        <NavLink to='categoria/Coming-of-age' onClick={() => clickOpenMenu()}>
+                                            <li>Coming-of-age</li>
+                                        </NavLink>
+                                        <NavLink to='categoria/Romance' onClick={() => clickOpenMenu()}>
+                                            <li>Romance</li>
                                         </NavLink>
                                     </ul>
                                 </li>
-                                <li className='menu__listaLi'>
-                                    <div>
-                                        <FiUsers className='menuLiIcon marginIcon' />
-                                        <a className='menu__listaA' href=''>Sobre nosotros</a>
-                                    </div>
-                                </li>
-                                <NavLink className='menuNavLinks' to='/'>
-                                    <li className='menu__listaLi'>
-                                        <div>
-                                            <AiOutlineMessage className='menuLiIcon marginIcon' />
-                                            <p className='menu__listaA'>
-                                                Contacto
-                                            </p>
-                                        </div>
-                                    </li>
-                                </NavLink>
                             </ul>
                         </div>
                     </div>

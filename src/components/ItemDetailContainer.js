@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
 
     return (
 
-        <div className='ItemDetailContainer'>
+        <>
 
             {loading
                 ?
@@ -36,7 +36,7 @@ const ItemDetailContainer = () => {
                     <ItemDetail itemDetail={mangaDetail} />
                 </div>
             }
-        </div>
+        </>
 
 
 

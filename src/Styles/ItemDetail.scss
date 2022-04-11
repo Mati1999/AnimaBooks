@@ -7,23 +7,29 @@
     align-items: center;
     justify-content: space-around;
     padding: 2rem;
+
+    @include mobile {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 .detailImgContainer {
-    @include medidas(40%, 100%);
+    @include medidas(100%, 100%);
     display: flex;
     justify-content: center;
     align-items: center;
 
     img {
-        width: 80%;
+        width: 90%;
         border-radius: 1rem;
         object-fit: cover;
     }
 }
 
 .detailDataContainer {
-    @include medidas(40%, 90%);
+    @include medidas(100%, 90%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,6 +39,10 @@
     padding: 1rem;
     box-shadow: 1px 1px 7px $colorTerciario;
 
+    @include mobile {
+        @include medidas(90%, 100%);
+        margin: 1rem 0 0 0;
+    }
 
     h2 {
         @include medidas(100%, 20%);
