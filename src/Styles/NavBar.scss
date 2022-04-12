@@ -22,7 +22,8 @@
 .menuButtonContainer {
   @include medidas(100%, 4rem);
   background: $colorSecundario;
-  position: relative;
+  position: fixed;
+  top: 0;
 }
 
 .menuButton {
@@ -77,7 +78,7 @@
 }
 
 .active::after {
-  transform: translateY(-10px) rotate(-45deg);
+  transform: translateY(-12px) rotate(-45deg);
   background: $colorPrimario;
 }
 

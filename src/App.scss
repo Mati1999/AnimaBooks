@@ -13,6 +13,7 @@
   color: $colorSecundario;
 
   @include mobile {
+    position: relative;
     flex-direction: column;
   }
 }
