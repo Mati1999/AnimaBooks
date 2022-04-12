@@ -115,7 +115,7 @@ const Menu = () => {
                                 </div>
                             </NavLink>
 
-                            <CartWidget menuWidt={clickOpenMenu}></CartWidget>
+                            <CartWidget menuWidth={clickOpenMenu}></CartWidget>
                             <NavLink className='linkUserLogIn' to='/user' onClick={() => clickOpenMenu()}
                             //  onClick={() => { signIngWithGoogle() }}
                             >

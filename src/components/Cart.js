@@ -64,7 +64,7 @@ const Cart = () => {
                         <div className='noItemsInCart'>
                             <h2> No hay Items en el carrito</h2>
                             <Link className="linkButtons" to='/'>
-                                <button className="goToCartButton">Ir al catálogo</button>
+                                <button className="goToCartButtonOnCart">Ir al catálogo</button>
                             </Link>
                         </div>
                         :
@@ -151,10 +151,9 @@ const Cart = () => {
                                     </div>
                                     :
                                     <div className='cartGeneralDetail'>
-                                        <div>
+                                        <div className='cartPurchaseId'>
                                             <h3>Muchas gracias por adquirir nuestros productos</h3>
-                                            <p>{`Este es el código único para tu compra: 
-                                            ${orderId}`}</p>
+                                            <p>Este es el código único para tu compra: <span>{orderId}</span> </p>
                                         </div>
                                     </div>
                                 }

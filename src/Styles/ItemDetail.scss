@@ -46,10 +46,11 @@
     @include mobile {
         @include medidas(90%, 100%);
         margin: 1rem 0 0 0;
+        padding: .5rem;
     }
 
     h2 {
-        @include medidas(100%, 20%);
+        @include medidas(100%, 100%);
         font-size: 2rem;
     }
 
@@ -60,39 +61,15 @@
         display: flex;
         flex-direction: column;
 
+        @include mobile {
+            flex-direction: row;
+
+        }
+
         span {
             font-weight: 600;
+            margin: 0 .5rem 0 0;
         }
     }
 
-}
-
-.linkButtons {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    cursor: default;
-
-    &:hover {
-        cursor: pointer;
-    }
-}
-
-.goToCartButton {
-    width: 60%;
-    border: 2px solid $colorSecundario;
-    border-radius: .5rem;
-    background: $colorPrimario;
-    color: $colorSecundario;
-    font-size: 1.3rem;
-    font-weight: 700;
-    padding: .5rem 1rem;
-    transition: all .3s ease;
-
-    &:hover {
-        background: $colorSecundario;
-        color: $colorPrimario;
-        cursor: pointer;
-    }
 }

@@ -253,11 +253,12 @@
   }
 
   a {
-    @include medidas(100%, auto);
+    @include medidas(80%, auto);
     color: $colorPrimario;
     text-decoration: none;
     transition: all 0.3s ease;
     border-bottom: 2px solid transparent;
+    padding: 0 0 0 2rem;
 
     @include mobile {
       @include medidas(100%, auto);
@@ -265,11 +266,7 @@
     }
 
     li {
-      text-align: center;
-
-      @include mobile {
-        text-align: left;
-      }
+      text-align: left;
     }
 
     &:hover {

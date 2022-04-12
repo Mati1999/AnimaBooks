@@ -65,6 +65,10 @@
   text-decoration: none;
   cursor: default;
 
+  @include mobile {
+    margin: 1rem 0 0 0;
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -87,5 +91,27 @@
 
   @include mobile {
     @include medidas(100%, 100%);
+  }
+}
+
+.goToCartButton {
+  width: 60%;
+  border: 2px solid $colorSecundario;
+  border-radius: .5rem;
+  background: $colorPrimario;
+  color: $colorSecundario;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: .5rem 1rem;
+  transition: all .3s ease;
+
+  @include mobile {
+    @include medidas(100%, 100%);
+  }
+
+  &:hover {
+    background: $colorSecundario;
+    color: $colorPrimario;
+    cursor: pointer;
   }
 }
