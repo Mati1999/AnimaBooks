@@ -29,6 +29,6 @@
 
   @include mobile {
     @include medidas(100%, 100%);
-    margin: 0;
+    margin: 4rem 0 0 0;
   }
 }
