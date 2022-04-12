@@ -26,6 +26,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  h1 {
+    @include mobile {
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 .itemListContainerLoader {

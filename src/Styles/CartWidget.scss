@@ -5,6 +5,7 @@
   display: flex;
   justify-content: flex-start;
 
+
   &:hover {
     cursor: pointer;
   }
@@ -16,6 +17,10 @@
     text-decoration: none;
     color: $colorPrimario;
 
+    @include mobile {
+      justify-content: center;
+    }
+
     &:hover>p {
       border-bottom: 2px solid $colorPrimario;
     }
@@ -25,6 +30,11 @@
     margin: 0 0 0 2rem;
     border-bottom: 2px solid transparent;
     transition: all .3s ease;
+
+    @include mobile {
+      @include medidas(50%, auto);
+      margin: 0 0 0 1rem;
+    }
   }
 
   div {

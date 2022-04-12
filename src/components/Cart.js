@@ -1,9 +1,10 @@
 import React,{ useState } from 'react'
 import { useCartContext } from '../context/CartContext';
 import '../Styles/Carrito.scss';
+import { AiOutlineUser } from 'react-icons/ai';
 import { useUserContext } from '../context/UserContext';
 import { Formik } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link,NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 
@@ -50,8 +51,11 @@ const Cart = () => {
 
         <>
             {!user ?
-                <div>
+                <div className='cartNoUserMsj'>
                     <h3>Para agregar productos al carrito necesitas iniciar sesión</h3>
+                    <NavLink className='userLoginCart' to='/user'>
+                        <p>Inicia Sesión</p>
+                    </NavLink>
                 </div>
                 :
                 <>

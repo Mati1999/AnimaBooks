@@ -46,7 +46,7 @@ const ItemListContainer = () => {
                 </div>
                 :
                 <div className='listContainerContent'>
-                    <Title contenido={categoryId ? categoryId : 'Inicio'} />
+                    <Title contenido={categoryId ? categoryId : 'Catálogo'} />
                     <ItemList mangas={mangas} />
                 </div>
             }

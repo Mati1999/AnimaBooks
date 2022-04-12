@@ -84,4 +84,8 @@
     color: $colorPrimario;
     background: $colorTerciario;
   }
+
+  @include mobile {
+    @include medidas(100%, 100%);
+  }
 }

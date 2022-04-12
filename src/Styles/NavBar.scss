@@ -14,6 +14,8 @@
     @include medidas(100vw, 100%);
     left: 100%;
     margin: 3rem 0 0 0;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -87,6 +89,12 @@
   align-items: flex-start;
   justify-content: flex-start;
   padding: 1rem 0 0 1.5rem;
+
+  @include mobile {
+    @include medidas(80%, 100%);
+    padding: 2rem;
+    justify-content: center;
+  }
 }
 
 .marginIcon {
@@ -102,18 +110,31 @@
     @include medidas(100%, 100%);
     display: flex;
     align-items: center;
+
+    @include mobile {
+      justify-content: center;
+    }
   }
 
   .menu__marcaIcon {
     @include medidas(4rem, 50%);
     padding: 0 10% 0 0;
     margin: 0;
+
+    @include mobile {
+      @include medidas(2rem, 50%);
+      padding: 0
+    }
   }
 
   h4 {
     @include medidas(100%, auto);
     color: $colorPrimario;
     margin: 0 0 0 1rem;
+
+    @include mobile {
+      @include medidas(50%, auto);
+    }
   }
 }
 
@@ -125,9 +146,18 @@
   align-items: center;
   position: relative;
 
+  @include mobile {
+    justify-content: center;
+  }
+
   p {
     @include medidas(65%, auto);
     color: $colorPrimario;
+
+    @include mobile {
+      @include medidas(50%, auto);
+      margin: 0 0 0 1rem;
+    }
   }
 }
 
@@ -151,10 +181,19 @@
   flex-direction: column;
   justify-content: flex-start;
 
+  @include mobile {
+    @include medidas(100%, 100%);
+    margin: 0;
+  }
+
   .menuLiIcon {
     color: $colorPrimario;
     @include medidas(2rem, 100%);
     margin: 0 2rem 0 0;
+
+    @include mobile {
+      margin: 0;
+    }
   }
 
 }
@@ -175,7 +214,11 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    @include medidas(100%, 100%)
+    @include medidas(100%, 100%);
+
+    @include mobile {
+      justify-content: center;
+    }
   }
 
   .menu__listaA {
@@ -184,6 +227,11 @@
     text-decoration: none;
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease;
+
+    @include mobile {
+      @include medidas(50%, auto);
+      margin: 0 0 0 1rem;
+    }
   }
 
   &:hover {
@@ -197,17 +245,31 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+
+    @include mobile {
+      // @include medidas(100%, 100%);
+      align-items: center;
+    }
   }
 
   a {
-    @include medidas(80%, auto);
+    @include medidas(100%, auto);
     color: $colorPrimario;
     text-decoration: none;
     transition: all 0.3s ease;
     border-bottom: 2px solid transparent;
 
+    @include mobile {
+      @include medidas(100%, auto);
+      padding: 0 0 0 5rem;
+    }
+
     li {
       text-align: center;
+
+      @include mobile {
+        text-align: left;
+      }
     }
 
     &:hover {

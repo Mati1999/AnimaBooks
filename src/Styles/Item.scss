@@ -14,12 +14,27 @@
   transition: box-shadow .1s ease;
   box-shadow: 1px 1px 8px $colorSecundario;
 
+
+
+  @include mobile {
+    @include medidas(45%, 23rem);
+    margin: 0 0 1rem 0;
+    box-shadow: .5px .5px 6px $colorSecundario;
+
+  }
+
   div {
     @include medidas(100%, auto);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0 0 0 .2rem;
+
+    @include mobile {
+      @include medidas(100%, 100%);
+      padding: .5rem;
+      justify-content: space-between;
+    }
   }
 
   h2,
@@ -38,11 +53,5 @@
     width: 100%;
     border-radius: 0.5rem .5rem 0 0;
     object-fit: cover;
-  }
-
-
-  @include mobile {
-    @include medidas(45%, 20%);
-    margin: 0 0 1rem 0;
   }
 }

@@ -1,11 +1,15 @@
 @import './variables.scss';
 
 .userProfile {
-    @include medidas(100%, 90%);
+    @include medidas(100%, 80%);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+
+    @include mobile {
+        justify-content: flex-start;
+    }
 
     h1 {
         @include medidas(100%, 30%);
@@ -13,6 +17,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        @include mobile {
+            @include medidas(100%, 10%);
+            margin: 0;
+        }
     }
 }
 
@@ -23,8 +32,18 @@
     justify-content: flex-start;
     align-items: center;
 
+    @include mobile {
+        @include medidas(100%, 90%);
+    }
+
     h2 {
         margin: 0 0 3rem 0;
+
+        @include mobile {
+            @include medidas(100%, 10%);
+            text-align: center;
+            margin: 0;
+        }
     }
 }
 
@@ -40,9 +59,13 @@
     overflow-y: auto;
     box-shadow: inset 0px 0px 10px $colorTerciario;
 
+    @include mobile {
+        @include medidas(95%, 90%);
+    }
+
 
     &::-webkit-scrollbar {
-        @include medidas(10px, 100%);
+        @include medidas(8px, 100%);
         border-radius: .5rem;
         background-color: $colorSecundario;
         box-shadow: -2px 0px 5px $colorTerciario;
@@ -63,6 +86,11 @@
     border: 1px solid $colorSecundario;
     border-radius: .5rem;
     box-shadow: 2px 2px 5px $colorTerciario;
+
+    @include mobile {
+        @include medidas(100%, 100%);
+        margin: 0 0 1rem 0;
+    }
 
     ul {
         padding: 1rem;
@@ -89,6 +117,10 @@
         border-radius: .5rem;
         object-fit: unset;
         border-radius: .5rem;
+
+        @include mobile {
+            @include medidas(50%, 100%);
+        }
     }
 
     li {
@@ -97,19 +129,35 @@
         list-style-type: none;
         display: flex;
 
+        @include mobile {
+            @include medidas(100%, 100%);
+        }
+
         div {
             @include medidas(100%, 100%);
             margin: 0 0 0 2rem;
+
+            @include mobile {
+                margin: 0 0 0 1rem;
+            }
         }
 
         h5 {
             font-size: 1.5rem;
+
+            @include mobile {
+                margin: 0 0 1rem 0;
+            }
         }
     }
 
     p {
         font-weight: 600;
-        padding: 0 0 1rem 1rem
+        padding: 0 0 1rem 1rem;
+
+        @include mobile {
+            font-size: 1.2rem;
+        }
     }
 }
 
@@ -128,5 +176,31 @@
 
     h6 {
         font-size: 1rem;
+    }
+}
+
+
+.btnLogOut {
+    @include medidas(25%, 5%);
+    color: $colorSecundario;
+    border: 2px solid $colorSecundario;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    transition: all .3s ease-in-out;
+
+    @include mobile {
+        @include medidas(95%, 10%);
+        margin: 0 0 1rem 0;
+    }
+
+    &:hover {
+        color: $colorPrimario;
+        background: $colorSecundario;
+        cursor: pointer;
     }
 }
