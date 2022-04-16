@@ -139,7 +139,7 @@ function CartContextPrvovider({ children }) {
     }
 
     const noMoreStockNotification = () => {
-        toast.info('Lo lamento, la quantity que quiere agregar supera al stock disponible',{
+        toast.info('Lo lamento, la cantidad que quiere agregar supera al stock disponible',{
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,

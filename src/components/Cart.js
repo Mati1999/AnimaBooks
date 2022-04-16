@@ -105,14 +105,11 @@ const Cart = () => {
                                                 } else if (!/^([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]+[\s]*)+$/.test(valores.name)) {
                                                     errores.name = 'Ingrese un nombre válido';
                                                 }
-
                                                 if (!valores.phone) {
                                                     errores.phone = 'Porfavor ingrese un telefono celular';
                                                 } else if (!/^\(?(\d{3})\)?[-]?(\d{3})[-]?(\d{4})$/.test(valores.phone)) {
                                                     errores.phone = 'El número de teléfono debe tener 10 dígitos';
                                                 }
-
-
                                                 // Validar correo
                                                 if (!valores.email) {
                                                     errores.email = 'Porfavor, ingrese un correo electrónico';
@@ -144,7 +141,6 @@ const Cart = () => {
                                                         {touched.email && errors.email && <p>{errors.email}</p>}
                                                     </div>
                                                     <button type='submit' onClick={() => { changeSetBought() }}>Comprar productos</button>
-
                                                 </form>
                                             )}
                                         </Formik>

@@ -18,19 +18,21 @@ const ItemListContainer = () => {
     useEffect(() => {
         const db = getFirestore();
         const queryCollection = collection(db,'mangas');
+
+        const getQueryDocs = (query) => {
+            getDocs(query)
+                .then(res => setmangas(res.docs.map(item => ({ id: item.id,...item.data() }))))
+                .catch(err => console.log(err))
+                .finally(() => setloading(false))
+        }
+
         if (categoryId) {
             // lógica para traer la categoria de mangas
             const queryFilter = query(queryCollection,where('genre','==',categoryId));
-            getDocs(queryFilter)
-                .then(res => setmangas(res.docs.map(item => ({ id: item.id,...item.data() }))))
-                .catch(err => console.log(err))
-                .finally(() => setloading(false))
+            getQueryDocs(queryFilter)
         } else {
             // lógica para traer mangas
-            getDocs(queryCollection)
-                .then(res => setmangas(res.docs.map(item => ({ id: item.id,...item.data() }))))
-                .catch(err => console.log(err))
-                .finally(() => setloading(false))
+            getQueryDocs(queryCollection)
         }
     },[categoryId]);
 
