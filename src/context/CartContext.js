@@ -101,8 +101,7 @@ function CartContextPrvovider({ children }) {
     }
 
     let stockSobrante = 0;
-    const isStock = (prod,cant) => {
-
+    const isStockInCart = (prod,cant) => {
         let manga = cartList.find(manga => manga.id === prod.id);
 
         stockSobrante = (manga.stock - manga.quantity);
@@ -112,6 +111,19 @@ function CartContextPrvovider({ children }) {
         } else {
             return true;
         }
+    }
+
+    const isStockInDb = async (prod,cant) => {
+        const db = getFirestore();
+        const queryDb = doc(db,'mangas',prod.id);
+        const prodStock = await getDoc(queryDb);
+        const stockInDb = prodStock.data().stock;
+        // if (stockinDb < cant) {
+        //     return false;
+        // } else {
+        //     return true;
+        // }
+        return stockInDb
     }
 
     let precioTotal = 0;
@@ -156,12 +168,16 @@ function CartContextPrvovider({ children }) {
 
     //Función que me ejecuta la funcíon isInCart y luego agrega un producto al carrito o le aumenta la quantity. Luego setea la variable addOnCart para verificar si se añadió un producto y también envía los datos del nombre y quantity a la función de la notificación (addItemToCart) que se reproduce cuando agregamos un producto al carrito.
 
-    const itemAdd = (cant,itemDetail) => {
+    const itemAdd = async (cant,itemDetail) => {
         if (isInCart(itemDetail)) {
-            addItem({ ...itemDetail,quantity: cant })
-            onAddExtraFunctions(cant,itemDetail);
+
+            if (await isStockInDb(itemDetail,cant) < cant) noMoreStockNotification()
+            else {
+                addItem({ ...itemDetail,quantity: cant })
+                onAddExtraFunctions(cant,itemDetail);
+            }
         } else {
-            if (isStock(itemDetail,cant)) {
+            if (isStockInCart(itemDetail,cant)) {
                 cartList.find(item => item.id === itemDetail.id).quantity += cant;
                 onAddExtraFunctions(cant,itemDetail);
                 setCartList([...cartList]);
